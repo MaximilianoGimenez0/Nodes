@@ -1,0 +1,341 @@
+.profileCard {
+  position: relative;
+  background-color: rgba(26, 27, 34, 0.9);
+  border: 1px solid var(--surface-variant);
+  border-radius: 24px;
+  padding: 2.25rem;
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.profileCardGlow {
+  position: absolute;
+  top: -80px;
+  right: -80px;
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, rgba(196, 198, 255, 0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.profileHeader {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.avatarWrapper {
+  position: relative;
+  width: 84px;
+  height: 84px;
+  flex-shrink: 0;
+}
+
+.avatarImage {
+  width: 100%;
+  height: 100%;
+  border-radius: 22px;
+  object-fit: cover;
+  border: 2px solid var(--surface-variant);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.avatarFallback {
+  width: 100%;
+  height: 100%;
+  border-radius: 22px;
+  background-color: var(--primary-container);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-color);
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  font-weight: 700;
+  border: 2px solid rgba(196, 198, 255, 0.3);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.avatarInitials {
+  line-height: 1;
+}
+
+.statusIndicator {
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 3px solid var(--surface-color);
+}
+
+.statusIndicator.online {
+  background-color: var(--online-color);
+  box-shadow: 0 0 8px rgba(74, 222, 128, 0.6);
+}
+
+.profileMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.profileFullname {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-main);
+  word-break: break-word;
+}
+
+.profileBadgesRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.profileBadge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  background-color: rgba(66, 69, 123, 0.4);
+  border: 1px solid rgba(196, 198, 255, 0.25);
+  padding: 0.2rem 0.65rem;
+  border-radius: 100px;
+  white-space: nowrap;
+}
+
+/* Sección de Detalles del Usuario */
+.profileDetailsSingle {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.detailItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background-color: rgba(69, 70, 79, 0.25);
+  border: 1px solid var(--surface-variant);
+  border-radius: 16px;
+  padding: 1.1rem;
+  min-width: 0;
+  transition: border-color var(--transition-fast);
+}
+
+.detailItem:hover {
+  border-color: rgba(196, 198, 255, 0.35);
+}
+
+.detailHeaderRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.detailLabel {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+.copyFeedbackInline {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--success-color);
+  animation: fadeIn 0.2s ease;
+}
+
+.detailValueWrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--text-main);
+  font-size: 0.9375rem;
+  min-width: 0;
+}
+
+.detailValueWrapper.copyable {
+  cursor: pointer;
+  user-select: none;
+}
+
+.detailIcon {
+  width: 18px;
+  height: 18px;
+  color: var(--primary-color);
+  flex-shrink: 0;
+}
+
+.detailValue {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+  font-weight: 500;
+}
+
+.btnIconCopy {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--outline);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem;
+  border-radius: 8px;
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.btnIconCopy svg {
+  width: 16px;
+  height: 16px;
+}
+
+.btnIconCopy:hover {
+  color: var(--text-main);
+  background-color: rgba(255, 255, 255, 0.12);
+  border-color: var(--primary-color);
+}
+
+/* Zona de Peligro */
+.dangerZone {
+  border-top: 1px solid var(--surface-variant);
+  padding-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .dangerZone {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.dangerZoneHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.875rem;
+  max-width: 420px;
+}
+
+.dangerIconContainer {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background-color: var(--error-container);
+  border: 1px solid rgba(242, 184, 181, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.dangerIcon {
+  width: 22px;
+  height: 22px;
+  color: var(--error-color);
+}
+
+.dangerInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.dangerTitle {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.dangerDescription {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.btnDeleteAccount {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  min-height: 48px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  border-radius: 100px;
+  background-color: transparent;
+  color: var(--error-color);
+  border: 1.5px solid var(--error-color);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-decoration: none;
+  line-height: 1;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.btnDeleteAccount:hover {
+  background-color: var(--error-container);
+  color: #ffffff;
+  border-color: var(--error-color);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(140, 29, 24, 0.4);
+}
+
+.btnIcon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 640px) {
+  .profileCard {
+    padding: 1.5rem 1.25rem;
+    border-radius: 20px;
+    gap: 1.5rem;
+  }
+
+  .profileHeader {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .profileMeta {
+    align-items: center;
+  }
+
+  .profileBadgesRow {
+    justify-content: center;
+  }
+
+  .dangerZone {
+    align-items: stretch;
+  }
+
+  .btnDeleteAccount {
+    width: 100%;
+  }
+}

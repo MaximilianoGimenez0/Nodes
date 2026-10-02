@@ -1,0 +1,289 @@
+.homePage {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 2;
+  background: transparent;
+}
+
+.navbar {
+  border-bottom: 1px solid var(--surface-variant);
+  background-color: rgba(26, 27, 34, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+
+.navbarContainer {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0.875rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.navbarBrand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.brandIconSm {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 0 16px rgba(143, 152, 214, 0.4);
+}
+
+.brandIconSm svg {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: block;
+}
+
+.navbarTitle {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.125rem;
+  letter-spacing: -0.01em;
+  color: var(--text-main);
+  white-space: nowrap;
+}
+
+.navbarActions {
+  display: flex;
+  align-items: center;
+}
+
+.btnLogout {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.1rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  border-radius: 100px;
+  background-color: transparent;
+  color: var(--text-muted);
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-decoration: none;
+  line-height: 1;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.btnLogout:hover:not(:disabled) {
+  color: var(--text-main);
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.btnLogout:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.btnIcon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.mainContent {
+  flex: 1;
+  padding: 2.25rem 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.contentContainer {
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.pageHeading {
+  text-align: left;
+}
+
+.pageTitle {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 0.4rem;
+}
+
+.pageDescription {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.infoCard {
+  background-color: rgba(26, 27, 34, 0.9);
+  border: 1px solid var(--surface-variant);
+  border-radius: 16px;
+  padding: 1.25rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.infoCardIcon {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background-color: var(--primary-container);
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.infoCardIcon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.infoCardText h4 {
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 0.25rem;
+}
+
+.infoCardText p {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* Alertas */
+.alert {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.875rem 1.15rem;
+  border-radius: 14px;
+  font-size: 0.875rem;
+  margin-bottom: 1.25rem;
+  border: 1px solid transparent;
+  animation: fadeIn 0.25s ease-out;
+  word-break: break-word;
+}
+
+.alertDanger {
+  background-color: rgba(140, 29, 24, 0.35);
+  border-color: rgba(242, 184, 181, 0.3);
+  color: var(--error-color);
+}
+
+.alertIcon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.alertContent {
+  flex: 1;
+}
+
+.alertClose {
+  background: transparent;
+  border: none;
+  color: currentColor;
+  opacity: 0.7;
+  cursor: pointer;
+  font-size: 1.1rem;
+  padding: 0.25rem;
+  line-height: 1;
+}
+
+.alertClose:hover {
+  opacity: 1;
+}
+
+/* Skeleton Loaders */
+.skeletonCard {
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  background-color: rgba(26, 27, 34, 0.9);
+  border: 1px solid var(--surface-variant);
+  border-radius: 24px;
+  padding: 2.25rem;
+}
+
+.skeletonAvatar {
+  width: 84px;
+  height: 84px;
+  border-radius: 22px;
+  background: linear-gradient(90deg, #1A1B22 25%, #45464F 50%, #1A1B22 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.skeletonLine {
+  height: 18px;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #1A1B22 25%, #45464F 50%, #1A1B22 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.full {
+  width: 60%;
+}
+
+.half {
+  width: 40%;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (max-width: 640px) {
+  .navbarContainer {
+    padding: 0.75rem 1rem;
+  }
+
+  .navbarTitle {
+    font-size: 1rem;
+  }
+
+  .mainContent {
+    padding: 1.5rem 1rem;
+  }
+
+  .pageTitle {
+    font-size: 1.5rem;
+  }
+}

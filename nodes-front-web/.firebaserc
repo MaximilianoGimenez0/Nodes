@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "fir-test-75a01"
+  },
+  "targets": {
+    "fir-test-75a01": {
+      "hosting": {
+        "nodes_web": [
+          "fir-test-75a01"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

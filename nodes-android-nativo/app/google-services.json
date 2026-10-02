@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "381141661895",
+    "firebase_url": "https://fir-test-75a01-default-rtdb.firebaseio.com",
+    "project_id": "fir-test-75a01",
+    "storage_bucket": "fir-test-75a01.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:381141661895:android:4e970593e1a85bbda726e2",
+        "android_client_info": {
+          "package_name": "com.example.firebase_test"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQX3cO1NFWMw9aTy2l3SJDAttuC8jqou4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:381141661895:android:75b60e6e5624d986a726e2",
+        "android_client_info": {
+          "package_name": "com.maxigimenez.nodes"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQX3cO1NFWMw9aTy2l3SJDAttuC8jqou4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:381141661895:android:ca99f021eb4eb577a726e2",
+        "android_client_info": {
+          "package_name": "com.maximilianogimenez.nodes.reactnative"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQX3cO1NFWMw9aTy2l3SJDAttuC8jqou4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

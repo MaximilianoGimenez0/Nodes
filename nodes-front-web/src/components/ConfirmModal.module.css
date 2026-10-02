@@ -1,0 +1,256 @@
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  z-index: 50;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.modalContainer {
+  width: 100%;
+  max-width: 480px;
+  background-color: var(--surface-color);
+  border: 1px solid var(--surface-variant);
+  border-radius: 28px; /* Material Design 3 AlertDialog Corner Radius */
+  padding: 2rem 1.75rem;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.8), var(--shadow-error-glow);
+  animation: modalPop 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.modalHeader {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modalIconBadge {
+  width: 56px;
+  height: 56px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  background-color: var(--error-container);
+  border: 1px solid rgba(242, 184, 181, 0.3);
+  box-shadow: 0 0 24px rgba(140, 29, 24, 0.35);
+}
+
+.iconWarning {
+  width: 28px;
+  height: 28px;
+  color: var(--error-color);
+}
+
+.modalTitle {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 0.4rem;
+}
+
+.modalSubtitle {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.modalBody {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.warningBox {
+  background-color: rgba(140, 29, 24, 0.25);
+  border: 1px dashed rgba(242, 184, 181, 0.3);
+  border-radius: 14px;
+  padding: 1rem;
+}
+
+.warningBoxTitle {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--error-color);
+  margin-bottom: 0.5rem;
+}
+
+.warningList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+
+.warningList li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  word-break: break-word;
+}
+
+.bullet {
+  color: var(--error-color);
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.modalForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.formLabel {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.01em;
+}
+
+.textDanger {
+  color: var(--error-color);
+}
+
+.formInput {
+  width: 100%;
+  padding: 0.8125rem 1rem;
+  min-height: 48px;
+  background-color: rgba(26, 27, 34, 0.75);
+  border: 1px solid var(--outline);
+  border-radius: 12px;
+  color: var(--text-main);
+  font-size: 0.9375rem;
+  text-align: center;
+  transition: all var(--transition-fast);
+}
+
+.formInput:focus {
+  outline: none;
+  border-color: var(--error-color);
+  box-shadow: 0 0 0 3px rgba(242, 184, 181, 0.2);
+  background-color: var(--surface-color);
+}
+
+.formInput::placeholder {
+  color: var(--outline);
+}
+
+.modalActions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.btnCancel,
+.btnConfirm {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  min-height: 48px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  border-radius: 100px;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-decoration: none;
+  line-height: 1;
+  user-select: none;
+}
+
+.btnCancel {
+  background-color: var(--surface-variant);
+  color: var(--text-main);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.btnCancel:hover:not(:disabled) {
+  background-color: rgba(69, 70, 79, 0.85);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.btnConfirm {
+  background-color: var(--error-color);
+  color: #601410;
+  font-weight: 700;
+}
+
+.btnConfirm:hover:not(:disabled) {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-error-glow), var(--shadow-md);
+}
+
+.btnCancel:disabled,
+.btnConfirm:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.btnSpinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modalPop {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 640px) {
+  .modalContainer {
+    padding: 1.5rem 1.25rem;
+    border-radius: 24px;
+  }
+
+  .modalActions {
+    flex-direction: column-reverse;
+  }
+
+  .btnCancel,
+  .btnConfirm {
+    width: 100%;
+  }
+}

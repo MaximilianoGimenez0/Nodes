@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" fill="none">
+  <!-- Fondo Circular Lavanda / Periwinkle -->
+  <circle cx="250" cy="250" r="240" fill="#8F98D6" />
+
+  <!-- Conexiones perimetrales entre nodos -->
+  <line x1="250" y1="140" x2="140" y2="250" stroke="#6748A5" stroke-width="24" stroke-linecap="round" />
+  <line x1="250" y1="140" x2="360" y2="250" stroke="#6748A5" stroke-width="24" stroke-linecap="round" />
+  <line x1="140" y1="250" x2="250" y2="360" stroke="#6748A5" stroke-width="24" stroke-linecap="round" />
+  <line x1="360" y1="250" x2="250" y2="360" stroke="#6748A5" stroke-width="24" stroke-linecap="round" />
+
+  <!-- Nodo Superior -->
+  <circle cx="250" cy="140" r="56" fill="#6748A5" />
+  <circle cx="250" cy="140" r="30" fill="#FFFFFF" />
+
+  <!-- Nodo Inferior -->
+  <circle cx="250" cy="360" r="56" fill="#6748A5" />
+  <circle cx="250" cy="360" r="30" fill="#FFFFFF" />
+
+  <!-- Nodo Izquierdo -->
+  <circle cx="140" cy="250" r="56" fill="#6748A5" />
+  <circle cx="140" cy="250" r="30" fill="#FFFFFF" />
+
+  <!-- Nodo Derecho -->
+  <circle cx="360" cy="250" r="56" fill="#6748A5" />
+  <circle cx="360" cy="250" r="30" fill="#FFFFFF" />
+</svg>

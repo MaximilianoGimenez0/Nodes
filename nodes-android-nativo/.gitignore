@@ -1,0 +1,32 @@
+# Built application files
+*.apk
+*.ap_
+*.aab
+!app/release/app-release.aab
+
+# Keystore files & credentials
+*.jks
+*.keystore
+signing.properties
+secrets.properties
+
+# Gradle and build outputs
+.gradle/
+build/
+app/build/
+captures/
+.externalNativeBuild/
+.cxx/
+local.properties
+/local.properties
+
+# Android Studio & IntelliJ files
+*.iml
+.idea/
+
+# Profiler & memory dumps
+*.hprof
+
+# OS files
+.DS_Store
+Thumbs.db

@@ -1,0 +1,418 @@
+.authPage {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 1rem;
+  position: relative;
+  z-index: 2;
+  background: transparent;
+}
+
+.authCardContainer {
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.authBrand {
+  text-align: center;
+  margin-bottom: 1.75rem;
+}
+
+.brandIconWrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  box-shadow: 0 0 36px rgba(143, 152, 214, 0.45);
+  margin-bottom: 1rem;
+  transition: transform var(--transition-fast);
+}
+
+.brandIconWrapper:hover {
+  transform: scale(1.06);
+}
+
+.brandLogo {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: block;
+}
+
+.brandTitle {
+  font-family: var(--font-heading);
+  font-size: 2.25rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--primary-color);
+}
+
+.brandSubtitle {
+  color: var(--text-muted);
+  font-size: 0.9375rem;
+  margin-top: 0.25rem;
+  padding: 0 0.5rem;
+}
+
+.authCard {
+  background-color: rgba(26, 27, 34, 0.9);
+  border: 1px solid var(--surface-variant);
+  border-radius: 24px;
+  padding: 2.25rem;
+  box-shadow: var(--shadow-lg), 0 0 40px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.authCardHeaderRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.authCardTitle {
+  font-family: var(--font-heading);
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 0;
+}
+
+.btnOpenAppCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background-color: rgba(66, 69, 123, 0.35);
+  border: 1px solid rgba(196, 198, 255, 0.35);
+  border-radius: 100px;
+  color: var(--primary-color);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  padding: 0.4rem 0.85rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-decoration: none;
+  box-shadow: var(--shadow-sm);
+  user-select: none;
+  line-height: 1;
+}
+
+.btnOpenAppCta:hover {
+  background-color: var(--primary-color);
+  color: var(--text-on-primary);
+  box-shadow: var(--shadow-primary-glow), var(--shadow-sm);
+  transform: translateY(-1px);
+}
+
+.btnOpenAppCta:active {
+  transform: translateY(0);
+}
+
+.btnOpenAppIcon {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.authCardDescription {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.45;
+}
+
+.authForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.formLabel {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.01em;
+}
+
+.inputIconWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.inputIcon {
+  position: absolute;
+  left: 1rem;
+  width: 18px;
+  height: 18px;
+  color: var(--outline);
+  pointer-events: none;
+}
+
+.formInput {
+  width: 100%;
+  padding: 0.8125rem 1rem;
+  min-height: 48px;
+  background-color: rgba(26, 27, 34, 0.75);
+  border: 1px solid var(--outline);
+  border-radius: 12px;
+  color: var(--text-main);
+  font-size: 0.9375rem;
+  transition: all var(--transition-fast);
+}
+
+.withIcon {
+  padding-left: 2.75rem;
+}
+
+.withAction {
+  padding-right: 2.75rem;
+}
+
+.formInput:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(196, 198, 255, 0.2);
+  background-color: var(--surface-color);
+}
+
+.formInput::placeholder {
+  color: var(--outline);
+}
+
+.btnInputAction {
+  position: absolute;
+  right: 0.75rem;
+  background: transparent;
+  border: none;
+  color: var(--outline);
+  cursor: pointer;
+  padding: 0.35rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color var(--transition-fast);
+  border-radius: 6px;
+}
+
+.btnInputAction svg {
+  width: 20px;
+  height: 20px;
+}
+
+.btnInputAction:hover {
+  color: var(--text-main);
+}
+
+.btnSubmit {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  min-height: 48px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  border-radius: 100px;
+  border: none;
+  cursor: pointer;
+  background-color: var(--primary-color);
+  color: var(--text-on-primary);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-fast);
+  text-decoration: none;
+  line-height: 1;
+  user-select: none;
+}
+
+.btnSubmit:hover:not(:disabled) {
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-primary-glow), var(--shadow-md);
+}
+
+.btnSubmit:active:not(:disabled) {
+  transform: translateY(0);
+  filter: brightness(0.96);
+}
+
+.btnSubmit:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.btnSpinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: spin 0.7s linear infinite;
+}
+
+.forgotPasswordWrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.85rem;
+}
+
+.btnTextForgotPassword {
+  background: transparent;
+  border: none;
+  color: var(--primary-color);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0.4rem 0.75rem;
+  border-radius: 8px;
+  transition: all var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  text-decoration: none;
+}
+
+.btnTextForgotPassword:hover {
+  color: #ffffff;
+  text-decoration: underline;
+  background-color: rgba(196, 198, 255, 0.08);
+}
+
+.authFooter {
+  text-align: center;
+  margin-top: 1.75rem;
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+
+.authFooterLinks {
+  margin-top: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.eulaLink {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.8125rem;
+  transition: color var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.eulaLink:hover {
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+
+.privacyBadge {
+  display: inline-flex;
+  align-items: center;
+  background-color: rgba(66, 69, 123, 0.35);
+  color: var(--primary-color);
+  padding: 0.3rem 0.8rem;
+  border-radius: 100px;
+  font-size: 0.75rem;
+  border: 1px solid rgba(196, 198, 255, 0.25);
+}
+
+/* Alertas */
+.alert {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.875rem 1.15rem;
+  border-radius: 14px;
+  font-size: 0.875rem;
+  margin-bottom: 1.25rem;
+  border: 1px solid transparent;
+  animation: fadeIn 0.25s ease-out;
+  word-break: break-word;
+}
+
+.alertIcon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.alertContent {
+  flex: 1;
+}
+
+.alertClose {
+  background: transparent;
+  border: none;
+  color: currentColor;
+  opacity: 0.7;
+  cursor: pointer;
+  font-size: 1.1rem;
+  padding: 0.25rem;
+  line-height: 1;
+}
+
+.alertClose:hover {
+  opacity: 1;
+}
+
+.alertDanger {
+  background-color: rgba(140, 29, 24, 0.35);
+  border-color: rgba(242, 184, 181, 0.3);
+  color: var(--error-color);
+}
+
+.alertSuccess {
+  background-color: rgba(6, 78, 59, 0.4);
+  border-color: rgba(110, 231, 183, 0.3);
+  color: var(--success-color);
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (max-width: 640px) {
+  .authCard {
+    padding: 1.75rem 1.25rem;
+    border-radius: 20px;
+  }
+}
+
+@media (max-width: 380px) {
+  .brandTitle {
+    font-size: 1.875rem;
+  }
+
+  .brandIconWrapper {
+    width: 68px;
+    height: 68px;
+  }
+}

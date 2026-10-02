@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Nodes</string>
+    <string name="default_version">v%1$s</string>
+
+    <string name="workspace_description">Mis nodos</string>
+
+    <string name="common_email">Email</string>
+    <string name="common_password">Contraseña</string>
+    <string name="common_firstname">Nombre</string>
+    <string name="common_lastname">Apellido</string>
+    <string name="common_show_password">Mostrar contraseña</string>
+    <string name="common_hide_password">Ocultar contraseña</string>
+    <string name="cancel">Cancelar</string>
+    <string name="confirm">Confirmar</string>
+    <string name="back">Volver atrás</string>
+    <string name="gallery">Galería</string>
+    <string name="camera">Cámara</string>
+
+    <string name="common_cancel">Cancelar</string>
+
+    <string name="workspaces_empty_title">Tu espacio está vacío</string>
+    <string name="workspaces_empty_subtitle">Parece que todavía no formás parte de ningún Nodo.</string>
+    <string name="workspaces_empty_call_to_action">¡Creá tu primer Nodo para empezar a colaborar o unite a uno existente usando un código de invitación!</string>
+
+
+
+
+    <string name="workspaces_fab_join_description">Unirse a un Nodo</string>
+    <string name="workspaces_fab_join_text">Unirse</string>
+    <string name="workspaces_fab_create_description">Crear nodo</string>
+    <string name="workspaces_fab_create_text">Crear</string>
+    <string name="workspaces_fab_menu_description">Menú de acciones</string>
+
+    <string name="create_workspace_dialog_title">Crear nuevo Nodo</string>
+    <string name="create_workspace_dialog_label">Nombre del Nodo</string>
+    <string name="create_workspace_dialog_confirm_button">Crear</string>
+
+    <string name="join_workspace_dialog_title">Unirse a un Nodo</string>
+    <string name="join_workspace_dialog_label">Código de invitación</string>
+    <string name="join_workspace_dialog_confirm_button">Unirse</string>
+
+    <string name="login_title">Iniciar Sesión</string>
+    <string name="login_subtitle">Ingrese sus datos para iniciar sesión</string>
+    <string name="login_button_login">Login</string>
+    <string name="login_forgot_password">Olvidé mi contraseña</string>
+    <string name="login_navigate_to_signup_link">No tengo una cuenta, registrarme</string>
+
+    <string name="reset_password_dialog_title">Restablecer contraseña</string>
+    <string name="reset_password_dialog_message">Ingresa tu correo electrónico para recibir un enlace de restablecimiento.</string>
+    <string name="reset_password_dialog_send">Enviar</string>
+    <string name="reset_password_success_message">Si existe una cuenta asociada a ese email, recibirás un enlace para restablecer tu contraseña.</string>
+
+    <string name="signup_title">Registrarse</string>
+    <string name="signup_button_signup">Registrarse</string>
+    <string name="signup_navigate_to_login_link">Ya tengo una cuenta, iniciar sesión</string>
+
+    <string name="signup_terms_accept_part1">Acepto los </string>
+    <string name="signup_terms_accept_link">Términos de Uso</string>
+    <string name="signup_terms_accept_part2"> y confirmo que no subiré contenido objetable, abusivo o ilegal.</string>
+
+    <string name="bottom_nav_home">Inicio</string>
+    <string name="bottom_nav_home_desc">Ir a Inicio</string>
+    <string name="bottom_nav_workspaces">Nodos</string>
+    <string name="bottom_nav_workspaces_desc">Ver tus nodos</string>
+    <string name="bottom_nav_profile">Configuración</string>
+    <string name="bottom_nav_profile_desc">Ver tu configuración</string>
+
+    <string name="home_title">NODES</string>
+    <string name="home_welcome_icon_desc">Bienvenida</string>
+    <string name="home_welcome_message">¡Hola, %1$s!</string>
+    <string name="home_subtitle">Tu espacio para conectar ideas y equipos.</string>
+    <string name="home_tips_header">Sácale provecho a NODES</string>
+    <string name="home_tip_brainstorm_title">Tip: Lluvia de Ideas</string>
+    <string name="home_tip_brainstorm_desc">Creá un \'Nodo\' solo para ideas. Invita a tu equipo y usen las notas para anotar todo sin filtros.</string>
+    <string name="home_tip_media_title">Feature: Comparte Multimedia</string>
+    <string name="home_tip_media_desc">Compartí imágenes o enviá tu ubicación en cualquier momento.</string>
+    <string name="home_tip_reminders_title">Caso de Uso: Establecer Recordatorios</string>
+    <string name="home_tip_reminders_desc">Usa un Nodo para establecer recordatorios importantes para tus actividades.</string>
+    <string name="home_tip_private_title">Feature: Notas Privadas</string>
+    <string name="home_tip_private_desc">Usa un Nodo de forma privada sin invitar a nadie, como tu diario personal, lista de compras o borrador de ideas.</string>
+    <string name="home_footer_version">NODES %1$s</string>
+    <string name="home_quick_action_create">Nuevo Nodo</string>
+    <string name="home_quick_action_join">Unirse</string>
+    <string name="home_quick_action_private">Notas Privadas</string>
+
+    <string name="home_feature_collab_title">Espacios Colaborativos</string>
+    <string name="home_feature_collab_desc">Crea un Nodo y comparte tu código de invitación para colaborar en tiempo real.</string>
+    <string name="home_feature_notes_title">Notas y Tareas</string>
+    <string name="home_feature_notes_desc">Mantén tus ideas organizadas. Usa las listas de verificación para que nada se te escape.</string>
+    <string name="home_feature_reminders_title">Recordatorios Exactos</string>
+    <string name="home_feature_reminders_desc">Configura alarmas en tus notas y NODES te avisará justo cuando lo necesites.</string>
+    <string name="home_feature_multimedia_title">Adjunta Multimedia</string>
+    <string name="home_feature_multimedia_desc">Una imagen vale más que mil palabras. Sube fotos directamente a los chats de tu equipo.</string>
+
+    <string name="settings">Configuración</string>
+    <string name="logout">Cerrar Sesión</string>
+    <string name="delete_account">Eliminar Cuenta</string>
+    <string name="delete_account_dialog_title">Confirmar eliminación de cuenta</string>
+    <string name="delete_account_dialog_message">Esta acción es irreversible. Se eliminarán todos tus datos, incluyendo tus nodos y perfil. ¿Estás seguro de que deseas continuar?</string>
+    <string name="delete_account_success">Cuenta eliminada exitosamente</string>
+
+    <string name="profile_section">Mi Perfil</string>
+    <string name="profile_description">Tu nombre, apellido y correo asociados a esta cuenta.</string>
+    <string name="profile_pic_desc">Foto de perfil</string>
+    <string name="name_label">Name</string>
+    <string name="name_lastname">Last Name</string>
+    <string name="name_email">Email</string>
+    <string name="profile_pic_change_desc">Cambiar foto de perfil</string>
+    <string name="profile_pic_empty_desc">Perfil sin imagen</string>
+
+    <string name="profile_pic_change_title">Cambiar foto de perfil</string>
+    <string name="profile_pic_change_prompt">¿Desde dónde quieres seleccionar la imagen?</string>
+    <string name="application_section">Aplicación</string>
+    <string name="application_description">Personaliza el idioma, apariencia y texto de la app.</string>
+    <string name="language">Idioma</string>
+    <string name="theme">Tema de la aplicación</string>
+    <string name="theme_system">Automático (Sistema)</string>
+    <string name="theme_light">Claro</string>
+    <string name="theme_dark">Oscuro</string>
+    <string name="font_size">Tamaño de fuente</string>
+    <string name="font_small">Pequeña</string>
+    <string name="font_medium">Mediana</string>
+    <string name="font_large">Grande</string>
+
+    <string name="notifications_section">Notificaciones</string>
+    <string name="notifications_description">Elige si quieres recibir alertas y recordatorios.</string>
+    <string name="allow_notifications">Permitir notificaciones</string>
+    <string name="allow_push_notifications">Notificaciones Push</string>
+    <string name="allow_reminders_notifications">Recordatorios</string>
+    <string name="allow_exact_alarms">Permitir alarmas exactas</string>
+    <string name="allow_exact_alarms_desc">Requerido para que los recordatorios suenen a la hora exacta.</string>
+
+    <string name="checklist_dialog_title">Crear nueva lista</string>
+    <string name="checklist_dialog_list_title_label">Título de la lista</string>
+    <string name="checklist_dialog_delete_item_desc">Borrar ítem</string>
+    <string name="checklist_dialog_new_item_label">Nuevo ítem</string>
+    <string name="checklist_dialog_add_item_desc">Añadir ítem</string>
+
+    <string name="error_image">Error con la imagen</string>
+    <string name="permission_camera_denied">Permiso de cámara denado</string>
+
+    <string name="workspace_join_success">¡Te has unido al nodo!</string>
+    <string name="workspace_join_error">Error: No se pudo unir al nodo</string>
+    <string name="workspace_create_success">Nodo \'%1$s\' creado con éxito</string>
+    <string name="workspace_create_error">Error: No se pudo crear el nodo</string>
+    <string name="workspace_entry_add_error">Error al enviar el mensaje</string>
+    <string name="workspace_delete_auth_error">Error: Debes estar logueado para eliminar</string>
+    <string name="workspace_delete_entry_success">Entrada eliminada</string>
+    <string name="workspace_delete_entry_error">Error al eliminar la entrada</string>
+    <string name="workspace_category_update_success">Categoría \'%1$s\' añadida</string>
+    <string name="workspace_category_update_error">Error al actualizar la categoría</string>
+    <string name="workspace_checklist_update_error">Error al actualizar la tarea</string>
+    <string name="workspace_name_update_success">Nombre actualizado con éxito</string>
+    <string name="workspace_picture_update_success">Imagen actualizada con éxito</string>
+    <string name="workspace_generic_save_error">Error al guardar: %1$s</string>
+    <string name="workspace_unauthenticated_error">Usuario no autenticado</string>
+    <string name="workspace_load_data_error">Error al cargar datos</string>
+
+    <string name="profile_picture_update_success">Foto actualizada correctamente</string>
+    <string name="profile_data_update_success">Datos actualizados correctamente</string>
+    <string name="profile_load_user_error">Error al cargar usuario: %1$s</string>
+
+    <string name="auth_error_empty_fields">El email o la contraseña no pueden estar vacíos</string>
+    <string name="auth_error_save_profile">Error al guardar perfil: %1$s</string>
+
+    <string name="auth_error_invalid_user">No hay ninguna cuenta registrada con este correo.</string>
+    <string name="auth_error_invalid_credentials">El correo o la contraseña son incorrectos.</string>
+    <string name="auth_error_network">No hay conexión a internet. Verifica tu red.</string>
+    <string name="auth_error_invalid_email">El formato del correo electrónico no es válido.</string>
+    <string name="auth_error_user_disabled">Esta cuenta de usuario ha sido deshabilitada.</string>
+    <string name="auth_error_too_many_requests">Demasiados intentos fallidos. Por favor, intenta más tarde.</string>
+    <string name="auth_error_operation_not_allowed">El inicio de sesión no está configurado correctamente.</string>
+    <string name="auth_error_unknown">Error de autenticación desconocido.</string>
+
+    <string name="auth_error_weak_password">La contraseña debe tener al menos 6 caracteres</string>
+    <string name="auth_error_user_collision">Ya existe un usuario con este email</string>
+
+    <string name="auth_terms_error">Debes aceptar los términos de uso.</string>
+    <string name="validation_email_invalid">Formato de correo no válido</string>
+    <string name="validation_password_too_short">Mínimo 6 caracteres</string>
+    <string name="validation_field_required">Este campo es obligatorio</string>
+
+
+    <string name="common_loading">Cargando...</string>
+    <string name="common_back">Volver atrás</string>
+    <string name="common_not_available">N/A</string>
+    <string name="common_gallery">Galería</string>
+    <string name="common_camera">Cámara</string>
+    <string name="common_save">Guardar</string>
+    <string name="common_name">Nombre</string>
+    <string name="common_profile_picture_description">Foto de perfil</string>
+    <string name="common_user_no_image_description">Usuario sin imagen</string>
+    <string name="common_date_not_available">Fecha no disponible</string>
+    <string name="common_created_on">Creado el: %1$s</string>
+    <string name="common_date_format_long">dd \'de\' MMMM \'de\' yyyy</string>
+
+    <string name="workspace_detail_info_description">Información del Nodo</string>
+
+    <string name="workspace_detail_image_process_error">Error al procesar la imagen</string>
+    <string name="workspace_detail_photo_process_error">Error al procesar la foto</string>
+    <string name="workspace_detail_camera_permission_denied">Permiso de cámara denegado</string>
+    <string name="workspace_detail_info_title">Información del Nodo</string>
+    <string name="workspace_detail_back_to_chat_description">Volver al chat</string>
+    <string name="workspace_detail_change_name_description">Cambiar nombre</string>
+    <string name="workspace_detail_invite_code_label">Código de Invitación</string>
+    <string name="workspace_detail_members_label">Miembros (%1$d)</string>
+    <string name="workspace_detail_change_picture_title">Cambiar foto de perfil</string>
+    <string name="workspace_detail_change_picture_prompt">¿Desde dónde quieres seleccionar la imagen?</string>
+
+    <string name="workspace_detail_picture_description">Foto de perfil del Nodo</string>
+    <string name="workspace_detail_no_image_description">Nodo sin imagen</string>
+
+    <string name="dialog_change_name_title">Ingresá un nuevo nombre</string>
+
+    <string name="workspaces_item_members_icon_description">Integrantes</string>
+    <plurals name="workspaces_item_member_count">
+        <item quantity="one">%1$d integrante</item>
+        <item quantity="other">%1$d integrantes</item>
+    </plurals>
+
+    <string name="workspaces_item_image_description">Foto del nodo</string>
+    <string name="workspaces_item_no_image_description">nodo sin imagen</string>
+
+    <string name="create_message_dialog_title">Escribir una nota</string>
+    <string name="create_message_dialog_label">Nota</string>
+
+
+    <string name="chat_user_me">Yo</string>
+    <string name="chat_fab_message">Nota</string>
+    <string name="chat_fab_checklist">Lista</string>
+    <string name="chat_fab_image">Imagen</string>
+    <string name="chat_fab_reminder">Alarma</string>
+    <string name="chat_image_description">Imagen de chat</string>
+    <string name="chat_category_label">Categoría</string>
+    <string name="chat_image_save_success">Imagen guardada</string>
+    <string name="chat_image_save_error">Error al guardar</string>
+    <string name="chat_image_download_description">Descargar imagen</string>
+    <string name="chat_image_load_error">Error al cargar imagen</string>
+    <string name="chat_reminder_default_title">Recordatorio</string>
+    <string name="chat_reminder_invalid_time">Hora no válida</string>
+    <string name="chat_reminder_alarm_icon_description">Alarma</string>
+    <string name="chat_reminder_date_format">EEE dd \'de\' MMMM, HH:mm</string>
+    <string name="chat_timestamp_format">HH:mm</string>
+    <string name="chat_timestamp_placeholder">--:--</string>
+
+    <string name="chat_anonymous_user">Anónimo</string>
+    <string name="chat_add_image_title">Añadir imagen</string>
+    <string name="chat_image_uploading_status">Enviando imagen...</string>
+    <string name="chat_image_send_success">Imagen enviada con éxito</string>
+    <string name="chat_image_upload_timeout">Tiempo de espera agotado al enviar la imagen</string>
+    <string name="chat_entry_options_title">Opciones de entrada</string>
+    <string name="chat_entry_option_add_category">Agregar categoría</string>
+    <string name="chat_entry_option_delete">Eliminar entrada</string>
+    <string name="chat_entry_option_report">Reportar entrada</string>
+    <string name="report_dialog_title">Reportar contenido</string>
+    <string name="report_dialog_message">¿Confirmas que quieres reportar este mensaje por violar las políticas de EULA o UGC? Esta acción será revisada por los administradores.</string>
+    <string name="report_success">Reporte enviado con éxito</string>
+    <string name="report_error">Error al enviar el reporte</string>
+    <string name="block_user">Bloquear usuario</string>
+    <string name="block_user_dialog_title">Confirmar bloqueo</string>
+    <string name="block_user_dialog_message">¿Estás seguro de que deseas bloquear a este usuario? No verás sus mensajes en ningún Nodo.</string>
+    <string name="block_user_success">Usuario bloqueado</string>
+    <string name="block_user_error">Error al bloquear usuario</string>
+    <string name="unblock_user">Desbloquear usuario</string>
+    <string name="unblock_user_dialog_title">Confirmar desbloqueo</string>
+    <string name="unblock_user_dialog_message">¿Estás seguro de que deseas desbloquear a este usuario? Volverás a ver sus mensajes en todos los Nodos.</string>
+    <string name="unblock_user_success">Usuario desbloqueado</string>
+    <string name="unblock_user_error">Error al desbloquear usuario</string>
+    <string name="chat_blocked_message">Mensaje oculto (Usuario bloqueado)</string>
+    <string name="common_close">Cerrar</string>
+    <string name="chat_assign_category_title">Asignar Categoría</string>
+    <string name="chat_category_name_label">Nombre de la categoría</string>
+
+    <string name="reminder_dialog_title">Nuevo Recordatorio</string>
+    <string name="reminder_dialog_label">Título del recordatorio</string>
+    <string name="reminder_dialog_select_time_button">Seleccionar hora: %1$s</string>
+
+    <string name="reminder_notification_text">Tu recordatorio está sonando.</string>
+    <string name="reminder_default_title">Recordatorio</string>
+    <string name="time_picker_dialog_title">Seleccionar hora</string>
+    <string name="common_accept">Aceptar</string>
+    <string name="role_admin">ADMIN</string>
+    <string name="role_user">USER</string>
+    <string name="role_make_admin">Convertir en Admin</string>
+    <string name="role_remove_admin">Quitar Admin</string>
+    <string name="error_update_permissions">Error al actualizar permisos</string>
+    <string name="leave_node">Salir del Nodo</string>
+    <string name="leave_node_warning_user">¿Estás seguro de que deseas salir de este Nodo? Perderás el acceso a todos los mensajes y archivos compartidos.</string>
+    <string name="leave_node_warning_admin">¡ATENCIÓN! Eres administrador. Si sales de este Nodo, el mismo se ELIMINARÁ PERMANENTEMENTE para todos los miembros actuales.</string>
+    <string name="leave_node_success">Has salido del Nodo</string>
+    <string name="leave_node_error">Error al intentar salir del Nodo</string>
+</resources>
