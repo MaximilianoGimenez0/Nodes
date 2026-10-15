@@ -1,6 +1,6 @@
 # 📱 NODES Android Nativo — Mobile Client & Hardware Services
 
-> Cliente móvil de alto rendimiento desarrollado en **Kotlin 2.2** y **Jetpack Compose** (BOM 2024.09.00), diseñado para **Android SDK 36** (UpsideDownCake+). Implementa arquitectura UDF reactiva, sincronización en tiempo real con Cloud Firestore, gestión local no volátil con Preferences DataStore, alarmas de hardware de precisión exacta con `AlarmManager`, resiliencia de arranque mediante `BootReceiver` y recepción en background de notificaciones push FCM con deep linking.
+> Aplicación móvil nativa desarrollada con **Kotlin 2.2** y **Jetpack Compose** (BOM 2024.09.00) para **Android SDK 36**. Cuenta con arquitectura unidireccional reactiva (UDF), sincronización en tiempo real con Cloud Firestore, guardado de preferencias con Preferences DataStore, recordatorios con alarmas exactas del sistema, restauración automática al reiniciar el teléfono y notificaciones push con apertura directa de salas.
 
 [![Kotlin](https://img.shields.io/badge/Kotlin-2.2.10-7F52FF?style=flat&logo=kotlin&logoColor=white)](https://kotlinlang.org/)
 [![Android SDK](https://img.shields.io/badge/Android_SDK-36_(API_24+)--3DDC84?style=flat&logo=android&logoColor=white)](https://developer.android.com/about/versions/15)
@@ -18,15 +18,15 @@
 
 ## Visión General & Propósito del Módulo
 
-**nodes-android-nativo** es la aplicación cliente principal del ecosistema NODES. Proporciona una experiencia móvil táctil, responsiva y cinemática optimizada para renderizar a 60 FPS sin bloqueos en el hilo principal (`Main thread`).
+**nodes-android-nativo** es la aplicación cliente principal del ecosistema NODES. Proporciona una experiencia móvil táctil responsive.
 
 ### Capacidades Centrales
-1. **Espacios de Trabajo Colaborativos ("Nodos"):** Creación y unión instantánea a salas mediante códigos alfanuméricos cortos únicos de 6 caracteres.
-2. **Entradas Multimodales Polimórficas:** Manejo tipado de mensajes de texto, listas interactivas de tareas (`CHECK_LIST`), notas con imágenes comprimidas (`IMAGE`) y recordatorios temporizados (`REMINDER`).
-3. **Motor de Alarmas de Hardware:** Planificación precisa en `AlarmManager` con `setExactAndAllowWhileIdle` en modo `RTC_WAKEUP`, inmune al Doze Mode y restaurable tras el reinicio del teléfono.
-4. **Lienzo Gráfico Cinemático de Partículas:** Motor físico en `Canvas` que simula la red interconectada con cálculo de distancias euclidianas y degradado alfa a 60 FPS sincronizado vía `withFrameNanos`.
-5. **Gobernanza y Moderación UGC:** Bloqueo reactivo de usuarios no deseados, reportes de contenido abusivo y aceptación formal de EULA.
-6. **Accesibilidad & Personalización:** Selector de fuentes con reescalado dinámico, temas Claro/Oscuro/Sistema y soporte nativo trilingüe (`es`, `en`, `pt`) mediante `LocaleConfig`.
+1. **Creación y Unión a Nodos:** Podés crear tus propios espacios de trabajo colaborativos o unirte a nodos existentes de forma sencilla mediante un código único de 6 caracteres.
+2. **Entradas y Contenido:** Creá y compartí distintos tipos de entradas según lo que necesites: texto, imágenes, to-do lists y reminders.
+3. **Notificaciones Push y Mensajería:** Mensajería con notificaciones push para mantenerte al día con las conversaciones y novedades en cada nodo.
+4. **Recordatorios y Alarmas Confiables:** Notificaciones programadas que suenan a la hora exacta, incluso con el teléfono en reposo o ahorro de energía, y se restablecen automáticamente si se reinicia el dispositivo.
+5. **Accesibilidad y Personalización:** Opciones de accesibilidad para ajustar el tamaño de texto, soporte para tema claro y tema oscuro (o sincronizado con el sistema) y disponibilidad en varios idiomas.
+6. **Cumplimiento con Directivas de Google Play:** Funciones de seguridad y moderación que incluyen bloqueo de usuarios, reporte de contenido abusivo y aceptación de términos de uso para contenido generado por la comunidad.
 
 ---
 
@@ -50,9 +50,9 @@ Event  │ │ State (StateFlow / collectAsStateWithLifecycle)
 ```
 
 ### Componentes de la Arquitectura
-* **Unidirectional Data Flow (UDF):** Los eventos generados en los componentes gráficos descienden al `ViewModel`, que actualiza inmutablemente instancias de `StateFlow` expuestas a la UI.
-* **Lifecycle-Aware Collection:** La vista recolecta estados mediante `collectAsStateWithLifecycle()`, pausando suscripciones a Firestore automáticamente cuando la aplicación entra en segundo plano para ahorrar datos móviles y batería.
-* **Separation of Concerns:** Desacoplamiento estricto entre lógica de presentación Compose, abstracciones de acceso a datos (`Repository`) y servicios de sistema operativo (`AlarmManager`, `BroadcastReceivers`).
+* **Flujo Unidireccional de Datos (UDF):** Las interacciones del usuario en la pantalla se envían al `ViewModel`, que actualiza el estado (`StateFlow`) para que la interfaz se redibuje de forma ordenada y predecible.
+* **Consumo Consciente del Ciclo de Vida:** La interfaz observa los estados con `collectAsStateWithLifecycle()`, pausando las lecturas de Firestore cuando la app pasa a segundo plano para ahorrar datos y batería.
+* **Separación de Responsabilidades:** Organización modular entre las pantallas en Jetpack Compose, los repositorios de datos (`Repository`) y los servicios del sistema Android (alarmas y notificaciones).
 
 ---
 
@@ -124,44 +124,44 @@ nodes-android-nativo/
 
 ---
 
-## Componentes y Subsistemas Críticos
+## Componentes y Funcionalidades Destacadas
 
-### 1. Motor de Alarmas de Hardware & Resiliencia de Reinicio
-* **Planificación de Alarma Exacta:** Cuando se genera una entrada de tipo `REMINDER`, `AlarmScheduler.schedule` valida el permiso `SCHEDULE_EXACT_ALARM` (o `USE_EXACT_ALARM` en Android 13+).
-* **Alarma en Modo Doze:** Dispara mediante `AlarmManager.setExactAndAllowWhileIdle(RTC_WAKEUP, triggerAtMillis, pendingIntent)` garantizando que el procesador se despierte incluso en ahorro de energía severo.
-* **Restauración en Arranque (`BootReceiver`):** Intercepta `ACTION_BOOT_COMPLETED` y `QUICKBOOT_POWERON`. Inicializa una corrutina en `Dispatchers.IO`, recupera los recordatorios activos pendientes de la colección Firestore del usuario y los vuelve a programar en el sistema operativo automáticamente.
+### 1. Sistema de Recordatorios y Restauración tras Reinicio
+* **Alarmas Exactas:** Al crear un recordatorio, se programa una alarma precisa en el sistema Android validando los permisos correspondientes (`SCHEDULE_EXACT_ALARM` o `USE_EXACT_ALARM`).
+* **Funcionamiento en Ahorro de Batería:** Se utiliza `setExactAndAllowWhileIdle` en modo `RTC_WAKEUP`, asegurando que la alarma suene puntualmente aunque el teléfono esté en reposo (Doze Mode).
+* **Restauración al Reiniciar (`BootReceiver`):** Si el dispositivo se reinicia, el receptor `BootReceiver` detecta el encendido, consulta en segundo plano los recordatorios pendientes en Firestore y vuelve a programar las alarmas automáticamente.
 
 ```kotlin
-// Reprogramación automática tras reinicio físico en BootReceiver.kt
+// Reprogramación automática tras reinicio en BootReceiver.kt
 class BootReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         if (intent.action == Intent.ACTION_BOOT_COMPLETED || 
             intent.action == "android.intent.action.QUICKBOOT_POWERON") {
             val userId = Firebase.auth.currentUser?.uid ?: return
             CoroutineScope(Dispatchers.IO).launch {
-                // Recupera entradas REMINDER pendientes de Firestore y reprograma
+                // Recupera recordatorios pendientes de Firestore y los reprograma
             }
         }
     }
 }
 ```
 
-### 2. Motor Gráfico Canvas de Nodos (60 FPS)
-* Ubicado en `Components.kt`, dibuja partículas flotantes interconectadas.
-* **Sincronización:** Emplea `withFrameNanos` en un `LaunchedEffect` desacoplado del árbol principal de recomposiciones, calculando distancias euclidianas $d(p_i, p_j)$ y proyectando aristas cuya opacidad se atenúa con la lejanía.
-* **Bypass de Vistas:** Cero instanciación de objetos en tiempo de renderizado; todo ocurre directamente en el búfer de trazado de Compose.
+### 2. Fondo Dinámico con Partículas en Canvas
+* Ubicado en `Components.kt`, genera un efecto visual interactivo de nodos interconectados.
+* **Animación Fluida:** Se sincroniza cuadro a cuadro a 60 FPS mediante `withFrameNanos`, calculando la cercanía entre puntos para dibujar líneas que se desvanecen con la distancia.
+* **Rendimiento:** Dibuja directamente sobre el lienzo de Compose sin crear objetos innecesarios en memoria durante la animación.
 
-### 3. Recepción Push en Background & Single-Top Deep Linking
-* `FirebaseMessagingService` procesa cargas útiles de FCM recibidas en segundo plano.
-* Al presionar la notificación, la aplicación es invocada pasando `pendingWorkspaceId` a `AuthViewModel`.
-* `ContentNavigation.kt` ejecuta la transición al chat correspondiente aplicando `launchSingleTop = true` y limpiando inmediatamente el identificador para prevenir bucles de recomposición en el backstack.
+### 3. Notificaciones Push y Navegación Directa al Chat
+* `FirebaseMessagingService` recibe y procesa las notificaciones de Firebase en segundo plano.
+* Al tocar la notificación, la app se abre y envía el identificador de la sala (`pendingWorkspaceId`) a la pantalla correspondiente.
+* La navegación hacia el espacio se realiza con `launchSingleTop = true`, evitando duplicar pantallas en el historial.
 
-### 4. Persistencia Segura & DataStore
-* `SettingsManager` encapsula `PreferencesDataStore` para almacenar:
-  * Tema visual (`Sistema`, `Claro`, `Oscuro`).
-  * Escala de fuente (Multiplicador tipográfico relativo).
-  * Idioma preferido.
-  * Estado de permisos de notificación.
+### 4. Ajustes y Preferencias Locales (DataStore)
+* `SettingsManager` utiliza `PreferencesDataStore` para guardar la configuración del usuario en el dispositivo:
+  * Tema visual (Claro, Oscuro o seguir al Sistema).
+  * Tamaño de texto ajustable.
+  * Idioma de la aplicación (español, inglés o portugués).
+  * Estado del permiso de notificaciones.
 
 ---
 
@@ -177,12 +177,12 @@ class BootReceiver : BroadcastReceiver() {
 
 ### Configuración de Credenciales Locales
 
-1. **Firebase Configuration:** Descarga el archivo oficial `google-services.json` desde Firebase Console y ubícalo en:
+1. **Firebase Configuration:** Descargá el archivo oficial `google-services.json` desde Firebase Console y ubicalo en:
    ```text
    nodes-android-nativo/app/google-services.json
    ```
 
-2. **Propiedades Locales (`local.properties`):** Asegúrate de que el archivo `local.properties` contenga la ruta a tu SDK y las URLs requeridas por la aplicación:
+2. **Propiedades Locales (`local.properties`):** Asegurate de que el archivo `local.properties` contenga la ruta a tu SDK y las URLs requeridas por la aplicación:
    ```properties
    sdk.dir=C\:\\Users\\tu_usuario\\AppData\\Local\\Android\\Sdk
    TERMS_URL=https://nodes-web.maxigimenez.com.ar/eula

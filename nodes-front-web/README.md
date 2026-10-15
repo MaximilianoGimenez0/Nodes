@@ -1,6 +1,6 @@
 # 🖥️ NODES Front Web — Support & Account Governance Portal
 
-> Portal web de autoservicio, soporte institucional y gobernanza de cuentas desarrollado con **React 19**, **TypeScript 6** y **Vite 8**. Provee la infraestructura de cumplimiento normativo (EULA oficial, privacidad y directivas de Google Play Store / GDPR), inicio de sesión seguro con Firebase Authentication, recuperación de contraseñas y solicitud de supresión definitiva de cuenta con purga en cascada en la nube.
+> Portal web desarrollado con **React 19**, **TypeScript 6** y **Vite 8** para brindar soporte, información legal y gestión de cuentas del ecosistema NODES. Cumple con las directivas de Google Play y privacidad (términos EULA públicos), permite iniciar sesión con Firebase Authentication, restablecer contraseñas y solicitar la eliminación completa y definitiva de la cuenta en la nube.
 
 [![React](https://img.shields.io/badge/React-19.2.8-20232A?style=flat&logo=react&logoColor=%2361DAFB)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-6.0.2-3178C6?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
@@ -17,20 +17,18 @@
 
 ## Visión General & Propósito del Portal Web
 
-El cliente web **nodes-front-web** desempeña tres roles estratégicos dentro del ecosistema NODES:
+El portal web **nodes-front-web** cumple dos funciones principales dentro del ecosistema NODES:
 
-1. **Cumplimiento Normativo (EULA & Directiva Google Play):** Google Play exige que cualquier aplicación con registro de usuarios disponga de una página pública independiente para consultar el Acuerdo de Licencia de Usuario Final (EULA) y solicitar la eliminación completa de la cuenta y sus datos asociados sin requerir que la aplicación móvil esté instalada en el dispositivo.
-2. **Autoservicio y Recuperación de Credenciales:** Permite a los usuarios consultar sus datos de perfil registrados, gestionar su estado de cuenta y solicitar enlaces de restablecimiento de contraseña vía Firebase Authentication con mapeo de errores tipados.
-3. **Puente Dinámico hacia la Aplicación Nativa (Deep Linking):** Si el usuario ingresa al portal desde un dispositivo móvil, el sistema intenta invocar el esquema personalizado de la app (`nodes://login`) y proporciona un enlace directo con redirección diferida a la tienda Google Play Store.
+1. **Términos de Uso y Cumplimiento con Google Play:** Brinda acceso público e independiente al Acuerdo de Licencia de Usuario Final (EULA) y ofrece un mecanismo directo para que cualquier usuario pueda solicitar el borrado total de su cuenta y sus datos, tal como lo exige Google Play, sin necesidad de tener la app móvil instalada.
+2. **Gestión de Perfil y Recuperación de Contraseña:** Permite a los usuarios consultar su información de perfil registrada, administrar su sesión y solicitar correos para restablecer su contraseña a través de Firebase Authentication.
 
 ---
 
 ## Arquitectura de Frontend & Principios Técnicos
 
-* **React 19 Concurrency:** Aprovecha el motor reactivo moderno de React 19 junto a transiciones no bloqueantes y sincronización de sesión en tiempo real a través de `AuthContext`.
-* **Zero Runtime Overhead Styling:** Implementa módulos de CSS (`*.module.css`) con variables personalizadas HSL y gradientes definidos en `index.css`, garantizando un encapsulamiento total de estilos sin sobrecargar el bundle con dependencias pesadas de runtime.
-* **Canvas 2D Particle Engine (60 FPS):** Simulación por software del grafo de nodos flotantes en `NodesBackground.tsx` gestionada mediante `requestAnimationFrame`, desacoplada por completo del ciclo de reconciliación del Virtual DOM de React.
-* **Guardias de Enrutamiento Declarativas:** Sistema de protección de rutas (`ProtectedRoute.tsx`) con redirección fluida y preservación de estado de navegación (`location.state`).
+* **React 19:** Aprovecha las mejoras reactivas de React 19, transiciones fluidas y sincronización de sesión en tiempo real a través de `AuthContext`.
+* **Estilos Modulares y Ligeros:** Utiliza CSS Modules (`*.module.css`) con variables personalizadas HSL definidas en `index.css`, logrando un diseño visual cuidado sin dependencias pesadas de estilos.
+* **Rutas Protegidas:** Sistema de navegación seguro (`ProtectedRoute.tsx`) que verifica la sesión del usuario antes de dar acceso a las pantallas privadas.
 
 ---
 
@@ -54,7 +52,7 @@ nodes-front-web/
     ├── index.css                              # Reset global, paleta HSL y tipografía Outfit / Inter
     ├── App.css                                # Reglas globales de contenedor
     ├── components/
-    │   ├── ConfirmModal.tsx                   # Diálogo destructivo que exige la palabra "ELIMINAR"
+    │   ├── ConfirmModal.tsx                   # Modal de confirmación que solicita escribir "ELIMINAR" para mayor seguridad
     │   ├── ConfirmModal.module.css            # Estilos del modal destructivo
     │   ├── ForgotPasswordModal.tsx            # Modal de recuperación de contraseña con validación
     │   ├── ForgotPasswordModal.module.css     # Estilos del modal de restablecimiento
@@ -62,9 +60,9 @@ nodes-front-web/
     │   ├── Navbar.module.css                  # Estilos responsivos de la barra de navegación
     │   ├── NodesBackground.tsx                # Motor Canvas 2D de partículas conectadas a 60 FPS
     │   ├── NodesBackground.module.css         # Posicionamiento absoluto fijo en fondo
-    │   ├── ProfileCard.tsx                    # Ficha de usuario y disparador de borrado de cuenta
+    │   ├── ProfileCard.tsx                    # Tarjeta de perfil de usuario y opción para solicitar el borrado de cuenta
     │   ├── ProfileCard.module.css             # Estilos de tarjeta de perfil con avatar y badges
-    │   ├── ProtectedRoute.tsx                 # Guardia que valida la sesión antes de dar acceso
+    │   ├── ProtectedRoute.tsx                 # Ruta protegida que comprueba si el usuario inició sesión antes de dar acceso
     │   └── ProtectedRoute.module.css          # Spinner de carga centrado
     ├── config/
     │   └── constants.ts                       # Constantes de negocio, deep links y textos legales
@@ -73,7 +71,7 @@ nodes-front-web/
     ├── pages/
     │   ├── Eula.tsx                           # Visualizador completo del Acuerdo de Licencia (EULA)
     │   ├── Eula.module.css                    # Estilos del documento legal con sidebar de navegación
-    │   ├── Home.tsx                           # Portal de gestión de perfil, privacidad y borrado
+    │   ├── Home.tsx                           # Pantalla principal para ver el perfil, privacidad y solicitar la baja de cuenta
     │   ├── Home.module.css                    # Estilos de la vista de inicio y alertas
     │   ├── Login.tsx                          # Inicio de sesión con correo, clave y deep links
     │   └── Login.module.css                   # Estilos inmersivos de autenticación
@@ -87,26 +85,17 @@ nodes-front-web/
 
 ## Flujos y Capacidades Clave
 
-### 1. Motor de Fondo Interactivo (NodesBackground)
-* Ubicado en `src/components/NodesBackground.tsx`, inicializa un contexto `<canvas>` 2D.
-* Gestiona un array de 20 partículas dinámicas que rebotan en los límites de la ventana del navegador.
-* Para cada cuadro computado por `requestAnimationFrame`, calcula la distancia entre cada par de puntos:
-  
-  $$\alpha = \left(1 - \frac{\text{distancia}}{\text{distancia\_máxima}}\right) \times 0.25$$
+### 1. Confirmación Segura de Baja de Cuenta (ConfirmModal)
+* Para evitar eliminaciones accidentales de datos irreversibles, `ConfirmModal.tsx` solicita al usuario escribir exactamente la palabra clave `ELIMINAR`.
+* Al confirmar, se invoca la función serverless `deleteUserAccount` (`httpsCallable`).
+* Al completarse el proceso, se cierra la sesión local y se redirige a `/login` con un mensaje de confirmación.
 
-* Dibuja líneas de conexión con atenuación de opacidad, creando un fondo vivo idéntico al de la app móvil sin impactar el hilo de renderizado del DOM.
+### 2. Recuperación de Contraseña
+* `ForgotPasswordModal.tsx` se conecta con `sendPasswordResetEmail(auth, email)` de Firebase Authentication.
+* Traduce los códigos de error habituales (correo inválido, usuario no encontrado, etc.) en mensajes claros y en español para el usuario.
 
-### 2. Guardias de Supresión de Cuenta (ConfirmModal)
-* Para evitar eliminaciones accidentales de datos irreversibles, el componente `ConfirmModal.tsx` exige al usuario escribir exactamente la palabra clave `ELIMINAR`.
-* Al confirmar, invoca la Cloud Function `deleteUserAccount` mediante `httpsCallable(functions, "deleteUserAccount")`.
-* Si la llamada concluye satisfactoriamente, desloguea la sesión local y redirige a `/login` con un mensaje de éxito auditado.
-
-### 3. Restablecimiento de Clave con Tipado Estricto
-* `ForgotPasswordModal.tsx` se comunica con `sendPasswordResetEmail(auth, email)`.
-* Mapea códigos de error de Firebase Authentication (`auth/invalid-email`, `auth/user-not-found`, etc.) a través del diccionario fuertemente tipado `AUTH_ERRORS` en `constants.ts`, entregando retroalimentación clara y contextual al usuario.
-
-### 4. Deep Linking Hacia la App Móvil
-* En la pantalla de inicio de sesión (`Login.tsx`), un botón de acción rápida permite abrir directamente la app instalada:
+### 3. Acceso Rápido a la App Móvil (Deep Linking)
+* En la pantalla de inicio de sesión (`Login.tsx`), un botón permite abrir directamente la app nativa instalada:
   ```typescript
   // Intento de apertura de app nativa vía esquema personalizado
   window.location.href = DEEP_LINKS.APP_LOGIN; // "nodes://login"
@@ -131,14 +120,14 @@ nodes-front-web/
 
 ### Configuración de Variables de Entorno
 
-Crea tu archivo `.env` basándote en la plantilla `.env.example`:
+Creá tu archivo `.env` basándote en la plantilla `.env.example`:
 
 ```bash
 cd nodes-front-web
 cp .env.example .env
 ```
 
-Configura las credenciales de tu proyecto de Firebase:
+Configurá las credenciales de tu proyecto de Firebase:
 ```ini
 VITE_FIREBASE_API_KEY=AIzaSy...
 VITE_FIREBASE_AUTH_DOMAIN=tu-proyecto.firebaseapp.com
