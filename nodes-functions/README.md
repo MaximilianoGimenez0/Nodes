@@ -1,4 +1,4 @@
-# ⚡ NODES Functions — Serverless Backend & Cloud Triggers
+# NODES Functions — Serverless Backend & Cloud Triggers
 
 > Backend serverless desarrollado con **Firebase Cloud Functions v2**, **Node.js 22 LTS** y **TypeScript**. Se encarga de procesar tareas en la nube: envía notificaciones push automáticas cuando hay nuevos mensajes en un nodo y gestiona la eliminación completa y segura de cuentas y archivos multimedia utilizando permisos de administrador.
 
