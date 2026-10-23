@@ -42,11 +42,9 @@ android {
         versionCode = appVersionCode
         versionName = appVersionName
 
-        // Generar recurso de string automático (R.string.app_version)
         resValue("string", "app_version", appVersionName)
         resValue("string", "app_version_code", appVersionCode.toString())
 
-        // Manifest placeholders
         manifestPlaceholders["appVersion"] = appVersionName
         manifestPlaceholders["appVersionCode"] = appVersionCode
 
@@ -58,9 +56,7 @@ android {
 
     buildTypes {
         release {
-            // ACTIVADO: Reduce el tamaño del código y dificulta la ingeniería inversa
             isMinifyEnabled = true
-            // ACTIVADO: Elimina imágenes y recursos que no se usan en la app
             isShrinkResources = true
 
             proguardFiles(
@@ -107,7 +103,6 @@ dependencies {
 
     implementation("androidx.lifecycle:lifecycle-process:2.8.3")
 
-    // Para Preferences DataStore
     implementation("androidx.datastore:datastore-preferences:1.0.0")
 
     implementation("androidx.navigation:navigation-compose:${nav_version}")
