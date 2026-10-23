@@ -5,9 +5,6 @@ import * as admin from "firebase-admin";
 admin.initializeApp();
 const db = admin.firestore();
 
-/**
- * Función para enviar notificaciones de chat (v2)
- */
 export const sendChatNotification = onDocumentCreated(
   {
     document: "workspaces/{workspaceId}/entries/{entryId}",
@@ -91,11 +88,7 @@ export const sendChatNotification = onDocumentCreated(
   }
 );
 
-/**
- * Función para eliminar cuenta de usuario (v2)
- */
 export const deleteUserAccount = onCall(async (request) => {
-  // 1. Verificación de autenticación (v2 usa request.auth)
   if (!request.auth) {
     throw new HttpsError(
       "unauthenticated",
@@ -107,7 +100,6 @@ export const deleteUserAccount = onCall(async (request) => {
   const bucket = admin.storage().bucket();
 
   try {
-    // --- 2. ELIMINACIÓN EN WORKSPACES ---
     const workspacesSnapshot = await db.collection("workspaces")
       .where("members", "array-contains", uid)
       .get();
@@ -117,8 +109,7 @@ export const deleteUserAccount = onCall(async (request) => {
       const workspaceData = doc.data();
 
       if (workspaceData.ownerId === uid) {
-        // ES DUEÑO: Borrado total del workspace y subcolecciones
-        // (sin límite de batch)
+        // Firestore no elimina subcolecciones en cascada; requiere borrado explícito de 'entries'
         const entriesSnapshot = await doc.ref.collection("entries").get();
         const deletePromises = entriesSnapshot.docs
           .map((entry) => entry.ref.delete());
@@ -126,14 +117,12 @@ export const deleteUserAccount = onCall(async (request) => {
 
         await doc.ref.delete();
 
-        // Borrar imágenes del nodo en Storage (el catch evita fallos si no
-        // hay imágenes)
+        // Ignorar fallos de Storage si el prefijo de imágenes no existe
         await bucket.deleteFiles({prefix: `node_pictures/${workspaceId}/`})
           .catch(() => console.log(
             "Directorio vacío o inexistente en Storage"
           ));
       } else {
-        // ES MIEMBRO: Salir del workspace y limpiar sus entradas personales
         await doc.ref.update({
           members: admin.firestore.FieldValue.arrayRemove(uid),
         });
@@ -151,7 +140,6 @@ export const deleteUserAccount = onCall(async (request) => {
 
     await Promise.all(workspaceDeletions);
 
-    // --- 3. ELIMINACIÓN DE PERFIL Y TOKENS ---
     const tokensSnapshot = await db
       .collection("users")
       .doc(uid)
@@ -164,14 +152,12 @@ export const deleteUserAccount = onCall(async (request) => {
 
     await db.collection("users").doc(uid).delete();
 
-    // Borrar imágenes de perfil (el catch evita fallos si el usuario
-    // no subió foto)
+    // Ignorar fallos de Storage si el usuario no posee foto de perfil
     await bucket.deleteFiles({prefix: `profile_pictures/${uid}/`})
       .catch(() => console.log(
         "Directorio de perfil vacío o inexistente"
       ));
 
-    // --- 4. ELIMINACIÓN DE AUTH ---
     await admin.auth().deleteUser(uid);
 
     return {result: "Cuenta eliminada exitosamente"};
