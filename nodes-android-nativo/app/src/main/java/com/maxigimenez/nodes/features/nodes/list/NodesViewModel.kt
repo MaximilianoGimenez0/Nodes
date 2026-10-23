@@ -632,22 +632,17 @@ class NodesViewModel(
         viewModelScope.launch {
             try {
                 if (isAdmin) {
-                    // ADMIN: Borrar todo el nodo y sus entradas
                     val nodeRef = firestore.collection("workspaces").document(node.id)
                     
-                    // Borrar entradas (batch)
                     val entriesSnapshot = nodeRef.collection("entries").get().await()
                     val batch = firestore.batch()
                     entriesSnapshot.documents.forEach { batch.delete(it.reference) }
                     batch.commit().await()
 
-                    // Borrar documento principal
                     nodeRef.delete().await()
                     
-                    // Nota: Las imágenes en Storage idealmente se borran via Cloud Functions
-                    // para evitar loops pesados en el cliente.
+                    // La eliminación recursiva en Storage se delega al backend para evitar operaciones pesadas en el cliente
                 } else {
-                    // USER: Simplemente remover de la lista de miembros
                     val nodeRef = firestore.collection("workspaces").document(node.id)
                     nodeRef.update("members", FieldValue.arrayRemove(userId)).await()
                 }

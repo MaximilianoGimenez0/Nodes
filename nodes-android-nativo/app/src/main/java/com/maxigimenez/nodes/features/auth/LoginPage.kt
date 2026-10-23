@@ -30,7 +30,6 @@ import com.maxigimenez.nodes.core.ui.components.NodesBackground
 
 import com.maxigimenez.nodes.core.ui.theme.entranceAnimation
 
-// Clase para mantener el estado individual de cada nodo
 class ParticleNode(
     var x: Float,
     var y: Float,
@@ -101,7 +100,6 @@ fun LoginPage(modifier: Modifier = Modifier, authViewmodel: AuthViewModel, navCo
         ) {
             Spacer(modifier = Modifier.height(48.dp))
 
-            // Branding Section
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = Modifier.entranceAnimation(delay = 100)
@@ -122,7 +120,6 @@ fun LoginPage(modifier: Modifier = Modifier, authViewmodel: AuthViewModel, navCo
                 )
             }
 
-            // Form Section
             ElevatedCard(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -320,7 +317,6 @@ fun LoginPage(modifier: Modifier = Modifier, authViewmodel: AuthViewModel, navCo
                 )
             }
 
-            // Footer Section
             TextButton(
                 onClick = { navController.navigate("signup") },
                 modifier = Modifier.padding(bottom = 32.dp)

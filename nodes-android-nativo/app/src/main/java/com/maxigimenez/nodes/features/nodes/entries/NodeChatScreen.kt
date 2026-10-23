@@ -212,20 +212,18 @@ fun NodeChatScreen(
     Box(
         modifier = modifier.fillMaxSize()
     ) {
-        // Capa 1: Fondo Inmersivo
         NodesBackground(speedMultiplier = 0.2f, nodeCount = 15)
 
-        // Capa 2: UI (Desplazada sobre la BottomBar)
         Scaffold(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(outerPadding), // <--- Eleva el Scaffold sobre la barra global
+                .padding(outerPadding),
             containerColor = Color.Transparent, 
             floatingActionButton = {
                 NodeEntriesControls(
                     isFabMenuExpanded = isFabMenuExpanded,
                     onFabClicked = { isFabMenuExpanded = !isFabMenuExpanded },
-                    // El imePadding se aplica al contenido del FAB para subir con el teclado
+                    // Elevar el botón flotante junto al teclado virtual en pantalla
                     modifier = Modifier.imePadding(),
                     onMessage = {
                         isFabMenuExpanded = false
@@ -264,7 +262,7 @@ fun NodeChatScreen(
                     state = listState,
                     modifier = Modifier.fillMaxSize(),
                     verticalArrangement = Arrangement.spacedBy(8.dp),
-                    // Padding extra para que el último mensaje no quede detrás del FAB
+                    // Evitar que el último mensaje quede oculto tras el botón flotante
                     contentPadding = PaddingValues(top = 16.dp, bottom = 120.dp),
                     reverseLayout = false
                 ) {

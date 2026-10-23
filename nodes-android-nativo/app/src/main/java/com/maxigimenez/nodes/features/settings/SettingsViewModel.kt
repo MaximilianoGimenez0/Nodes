@@ -14,15 +14,12 @@ class SettingsViewModel(
     private val settingsManager: SettingsManager,
 ) : ViewModel() {
 
-    // 1. Expone el Flow de ajustes
     val appSettings: StateFlow<AppSettings> = settingsManager.appSettingsFlow
         .stateIn(
             scope = viewModelScope,
             started = SharingStarted.WhileSubscribed(5000),
             initialValue = AppSettings()
         )
-
-    // 2. Funciones para guardar (¡Actualizadas!)
 
     fun setLanguage(language: String) {
         viewModelScope.launch { settingsManager.setLanguage(language) }
@@ -36,15 +33,11 @@ class SettingsViewModel(
         viewModelScope.launch { settingsManager.setAllowNotifications(isEnabled) }
     }
 
-    fun setFontSize(size: Int) { // <-- ¡AÑADIDO!
+    fun setFontSize(size: Int) {
         viewModelScope.launch { settingsManager.setFontSize(size) }
     }
 }
 
-/**
- * Factory para crear el SettingsViewModel.
- * Le "inyectamos" el SettingsManager que, a su vez, necesita el Context.
- */
 class SettingsViewModelFactory(
     private val settingsManager: SettingsManager
 ) : ViewModelProvider.Factory {

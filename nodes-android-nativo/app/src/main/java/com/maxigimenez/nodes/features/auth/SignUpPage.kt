@@ -98,7 +98,6 @@ fun SignUpPage(modifier: Modifier, authViewmodel: AuthViewModel, navController: 
         ) {
             Spacer(modifier = Modifier.height(48.dp))
 
-            // Branding Section
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = Modifier.entranceAnimation(delay = 100)
@@ -119,7 +118,6 @@ fun SignUpPage(modifier: Modifier, authViewmodel: AuthViewModel, navController: 
                 )
             }
 
-            // Form Section
             ElevatedCard(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -318,7 +316,6 @@ fun SignUpPage(modifier: Modifier, authViewmodel: AuthViewModel, navController: 
                 }
             }
 
-            // Footer Section
             TextButton(
                 onClick = { navController.navigate("login") },
                 modifier = Modifier.padding(bottom = 32.dp)

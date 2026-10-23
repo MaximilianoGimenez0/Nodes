@@ -143,7 +143,6 @@ fun DashboardContent(
     navController: NavController,
     contentNavController: NavController
 ) {
-    // ... features list ...
     val nodesFeatures = listOf(
         Triple(
             Icons.Filled.RocketLaunch,
@@ -178,19 +177,16 @@ fun DashboardContent(
                 )
             )
     ) {
-        // Capa 1: Fondo Inmersivo (Totalmente Edge-to-Edge)
         NodesBackground(speedMultiplier = 0.7f, nodeCount = 30)
 
-        // Capa 2: Contenido Seguro (Usa outerPadding del Scaffold global)
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(outerPadding)
-                .entranceAnimation(), // <--- Respeta la Status Bar y la BottomBar global
+                .entranceAnimation(),
             contentPadding = PaddingValues(bottom = 24.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-            // Branding Header
             item {
                 Spacer(modifier = Modifier.height(24.dp))
                 Text(
@@ -203,7 +199,6 @@ fun DashboardContent(
                 )
             }
 
-            // Welcome Header
             item {
                 Column(
                     modifier = Modifier
@@ -225,7 +220,6 @@ fun DashboardContent(
                 }
             }
 
-            // Quick Actions
             item {
                 Row(
                     modifier = Modifier
@@ -278,7 +272,6 @@ fun DashboardContent(
                 }
             }
 
-            // Features Title
             item {
                 Text(
                     text = stringResource(R.string.home_tips_header),
@@ -291,7 +284,6 @@ fun DashboardContent(
                 )
             }
 
-            // Features Cards
             items(nodesFeatures) { (icon, titleRes, descRes) ->
                 FeatureCard(
                     icon = icon,
@@ -301,7 +293,6 @@ fun DashboardContent(
                 )
             }
 
-            // Footer
             item {
                 AppVersionFooter(
                     appVersion = appVersion,
@@ -439,8 +430,6 @@ fun AppVersionFooter(appVersion: String, modifier: Modifier = Modifier) {
 fun getAppVersion(context: Context): String {
     return context.getString(R.string.default_version, com.maxigimenez.nodes.BuildConfig.VERSION_NAME)
 }
-
-// --- CLASES Y COMPONENTES DEL FONDO ANIMADO ---
 
 private class HomeParticleNode(
     var x: Float,

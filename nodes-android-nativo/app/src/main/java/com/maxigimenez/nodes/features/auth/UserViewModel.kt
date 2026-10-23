@@ -107,7 +107,6 @@ class UserViewModel(
         }
     }
 
-    // 2. Subir imagen desde la Cámara (Usa Bitmap)
     fun uploadProfilePictureFromBitmap(userId: String, bitmap: Bitmap) {
         viewModelScope.launch {
             _isUploadingImage.value = true
@@ -142,7 +141,6 @@ class UserViewModel(
         val storageRef = Firebase.storage.reference
         val imageRef = storageRef.child("profile_pictures/$userId/${UUID.randomUUID()}.jpg")
 
-        // Subimos el arreglo de bytes comprimido
         imageRef.putBytes(data).await()
         val downloadUrl = imageRef.downloadUrl.await().toString()
         userRepository.updateUserPicture(userId, downloadUrl)

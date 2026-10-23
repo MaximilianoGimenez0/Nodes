@@ -15,20 +15,19 @@ import kotlinx.coroutines.tasks.await
 
 class BootReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
+        // Compatibilidad con reinicio rápido de fabricantes OEM (ej. HTC, MIUI)
         if (intent.action == Intent.ACTION_BOOT_COMPLETED || intent.action == "android.intent.action.QUICKBOOT_POWERON") {
             val userId = Firebase.auth.currentUser?.uid ?: return
             
             CoroutineScope(Dispatchers.IO).launch {
                 try {
                     val db = Firebase.firestore
-                    // 1. Obtener todos los workspaces donde el usuario es miembro
                     val workspaces = db.collection("workspaces")
                         .whereArrayContains("members", userId)
                         .get().await()
 
                     for (doc in workspaces.documents) {
                         val workspaceId = doc.id
-                        // 2. Obtener entries de tipo REMINDER para cada workspace
                         val reminders = db.collection("workspaces").document(workspaceId)
                             .collection("entries")
                             .whereEqualTo("type", EntryType.REMINDER.name)
@@ -37,7 +36,6 @@ class BootReceiver : BroadcastReceiver() {
                         for (entryDoc in reminders.documents) {
                             val entry = entryDoc.toObject(NodeEntry::class.java)?.copy(id = entryDoc.id)
                             if (entry != null) {
-                                // 3. Reprogramar usando el AlarmScheduler (que ahora usa alarmas inexactas)
                                 AlarmScheduler.schedule(context, entry, workspaceId)
                             }
                         }

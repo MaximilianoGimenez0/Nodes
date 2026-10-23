@@ -147,13 +147,11 @@ class AuthViewModel(application: Application) : AndroidViewModel(application) {
 
         viewModelScope.launch {
             try {
-                // 1. Configuras la URL de destino
                 val actionCodeSettings = ActionCodeSettings.newBuilder()
                     .setUrl(BuildConfig.PASSWORD_RESET_URL)
-                    .setHandleCodeInApp(false) // false para que abra el navegador web
+                    .setHandleCodeInApp(false) // Abrir el enlace de restablecimiento en el navegador web
                     .build()
 
-                // 2. Pasas las configuraciones en la llamada
                 auth.sendPasswordResetEmail(email, actionCodeSettings).await()
 
                 onComplete(true, null)
@@ -322,7 +320,6 @@ class AuthViewModel(application: Application) : AndroidViewModel(application) {
                     .update("blockedUsers", FieldValue.arrayUnion(targetUid))
                     .await()
 
-                // Actualizar el perfil local
                 val currentProfile = _userProfile.value
                 if (currentProfile != null) {
                     val updatedBlockedList = currentProfile.blockedUsers.toMutableList().apply {
@@ -348,7 +345,6 @@ class AuthViewModel(application: Application) : AndroidViewModel(application) {
                     .update("blockedUsers", FieldValue.arrayRemove(targetUid))
                     .await()
 
-                // Actualizar el perfil local
                 val currentProfile = _userProfile.value
                 if (currentProfile != null) {
                     val updatedBlockedList = currentProfile.blockedUsers.toMutableList().apply {

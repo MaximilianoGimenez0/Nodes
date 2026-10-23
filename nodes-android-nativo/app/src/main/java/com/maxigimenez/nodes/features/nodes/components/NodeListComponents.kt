@@ -111,7 +111,7 @@ fun NodeList(
 ) {
     LazyColumn(
         modifier = modifier,
-        // Agregamos bottom = 140.dp para que el último nodo no quede tapado por la BottomBar + FAB
+        // Evitar que el último elemento quede oculto tras la barra inferior y el botón flotante
         contentPadding = PaddingValues(start = 16.dp, end = 16.dp, top = 16.dp, bottom = 140.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {

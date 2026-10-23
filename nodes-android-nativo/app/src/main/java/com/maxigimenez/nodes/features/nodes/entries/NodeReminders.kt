@@ -98,9 +98,7 @@ class ReminderReceiver : BroadcastReceiver() {
 
 object AlarmScheduler {
 
-    /**
-     * Verifica si la aplicación puede programar alarmas exactas en Android 12+ (API 31+).
-     */
+    /** Verifica la concesión para programar alarmas exactas en Android 12+ (API 31). */
     fun canScheduleExactAlarms(context: Context): Boolean {
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
@@ -135,9 +133,7 @@ object AlarmScheduler {
         }
     }
 
-    /**
-     * Programa una alarma exacta usando setExactAndAllowWhileIdle (efectivo en Doze Mode).
-     */
+    /** Programa una alarma exacta que se ejecuta incluso en modo Doze. */
     fun schedule(context: Context, entry: NodeEntry, workspaceId: String?): Boolean {
         val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val entryId = entry.id
@@ -157,7 +153,6 @@ object AlarmScheduler {
 
         if (timeInMillis == 0L || timeInMillis <= System.currentTimeMillis()) return false
 
-        // Verificar si la app tiene permiso en Android 12+
         if (!canScheduleExactAlarms(context)) {
             Log.w("AlarmScheduler", "Permiso de alarma exacta denegado por el sistema.")
             return false
@@ -181,9 +176,6 @@ object AlarmScheduler {
         }
     }
 
-    /**
-     * Cancela una alarma previamente programada.
-     */
     fun cancel(context: Context, entryId: String) {
         val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val pendingIntent = createPendingIntent(

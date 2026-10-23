@@ -98,7 +98,6 @@ fun FullScreenImageViewer(
                     )
             )
 
-            // Top Bar Buttons
             Box(
                 modifier = Modifier
                     .fillMaxSize()
@@ -151,7 +150,7 @@ private suspend fun downloadBitmap(context: Context, url: String): Bitmap? {
         val loader = ImageLoader(context)
         val request = ImageRequest.Builder(context)
             .data(url)
-            .allowHardware(false) // Necesario para obtener el Bitmap
+            .allowHardware(false) // Requerido para acceder a los píxeles del Bitmap en memoria principal
             .build()
 
         val result = loader.execute(request)

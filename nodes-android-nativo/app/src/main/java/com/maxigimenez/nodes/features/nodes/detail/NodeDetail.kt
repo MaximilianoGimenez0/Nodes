@@ -77,7 +77,7 @@ fun NodeDetailScreen(
     Scaffold(
         modifier = modifier
             .fillMaxSize()
-            .padding(outerPadding), // <--- IMPORTANTE: Desplaza el detalle sobre la BottomBar
+            .padding(outerPadding),
         topBar = {
             TopAppBar(
                 title = {
@@ -204,7 +204,7 @@ fun NodeDetailsContent(
     Scaffold(
         modifier = modifier
             .fillMaxSize()
-            .padding(outerPadding), // <--- IMPORTANTE: Desplaza el contenido sobre la BottomBar
+            .padding(outerPadding),
         topBar = {
             TopAppBar(
                 title = { Text(stringResource(R.string.workspace_detail_info_title)) },
@@ -242,8 +242,6 @@ fun NodeDetailsContent(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            // ... items logic ...
-
             item {
                 NodeProfileImage(
                     imageUrl = node?.workspacePicture,
@@ -355,7 +353,6 @@ fun NodeDetailsContent(
             title = { Text(stringResource(R.string.chat_entry_options_title)) },
             text = {
                 Column(Modifier.fillMaxWidth()) {
-                    // Opción de Bloqueo/Desbloqueo (Existente)
                     Text(
                         text = stringResource(if (isBlocked) R.string.unblock_user else R.string.block_user),
                         color = if (isBlocked) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.error,
@@ -368,7 +365,6 @@ fun NodeDetailsContent(
                             .padding(vertical = 12.dp)
                     )
 
-                    // Opción de Rol Admin (Nueva)
                     if (amIAdmin) {
                         val isTargetOwner = targetUser?.id == node?.ownerId
                         
@@ -647,7 +643,6 @@ fun UserProfileItem(user: UserProfile, isAdmin: Boolean, onLongClick: () -> Unit
             )
         }
 
-        // Badge de Rol
         Surface(
             color = if (isAdmin) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.surfaceVariant,
             shape = MaterialTheme.shapes.extraSmall,
@@ -723,7 +718,6 @@ fun NodeProfileImage(
             }
         }
 
-        // Overlay difuminado con icono de lapiz por encima
         Box(
             modifier = Modifier
                 .fillMaxSize()

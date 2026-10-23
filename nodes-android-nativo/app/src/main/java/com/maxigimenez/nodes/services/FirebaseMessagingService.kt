@@ -41,7 +41,6 @@ class FirebaseMessagingService : FirebaseMessagingService() {
                 CoroutineScope(Dispatchers.IO).launch {
                     val currentSettings = settingsManager.appSettingsFlow.first()
 
-                    // Mostrar notificación solo si la app está en segundo plano y las notificaciones están permitidas
                     if (!NodesApplication.isAppInForeground && currentSettings.allowNotifications) {
                         sendNotification(title, body, workspaceId)
                     }
@@ -51,7 +50,6 @@ class FirebaseMessagingService : FirebaseMessagingService() {
     }
 
     override fun onNewToken(token: String) {
-        // No logueamos el token en producción
         val currentUser = Firebase.auth.currentUser
         if (currentUser != null) {
             sendTokenToFirestore(token, currentUser.uid)
@@ -66,7 +64,7 @@ class FirebaseMessagingService : FirebaseMessagingService() {
             flags = Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_CLEAR_TOP
         }
 
-        // Usamos workspaceId.hashCode() como requestCode para evitar colisiones entre diferentes nodos
+        // Evitar sobreescritura de PendingIntents entre distintos nodos mediante requestCode único
         val requestCode = workspaceId?.hashCode() ?: 0
 
         val pendingIntent: PendingIntent = PendingIntent.getActivity(
@@ -91,16 +89,13 @@ class FirebaseMessagingService : FirebaseMessagingService() {
                     this@FirebaseMessagingService, android.Manifest.permission.POST_NOTIFICATIONS
                 ) == PackageManager.PERMISSION_GRANTED
             ) {
-                // Usamos el hash del workspace para agrupar notificaciones del mismo nodo si Android lo permite
+                // Reemplazar notificaciones previas del mismo nodo utilizando su identificador hash
                 val notificationId = if (!workspaceId.isNullOrBlank()) workspaceId.hashCode() else System.currentTimeMillis().toInt()
                 notify(notificationId, builder.build())
             }
         }
     }
 
-    /**
-     * Sube el token a la subcolección /users/{userId}/tokens
-     */
     private fun sendTokenToFirestore(token: String, userId: String) {
         if (token.isBlank() || userId.isBlank()) return
 

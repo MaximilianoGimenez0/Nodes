@@ -424,7 +424,6 @@ fun SettingsPage(
                 }
             }
 
-            // Switch 1: Notificaciones Push
             SettingSwitchItem(
                 text = stringResource(R.string.allow_push_notifications),
                 checked = isPushEnabled,
@@ -434,7 +433,6 @@ fun SettingsPage(
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            // Switch 2: Recordatorios
             SettingSwitchItem(
                 text = stringResource(R.string.allow_reminders_notifications),
                 checked = isRemindersEnabled,
@@ -544,7 +542,7 @@ fun SettingsPage(
             modifier = Modifier
                 .fillMaxSize()
                 .background(Color.Black.copy(alpha = 0.5f))
-                .clickable(enabled = false) {}, // Bloquea clics
+                .clickable(enabled = false) {},
             contentAlignment = Alignment.Center
         ) {
             Column(
@@ -737,7 +735,6 @@ private fun ProfilePicture(
             }
         }
 
-        // Overlay difuminado con icono de lapiz por encima
         Box(
             modifier = Modifier
                 .fillMaxSize()

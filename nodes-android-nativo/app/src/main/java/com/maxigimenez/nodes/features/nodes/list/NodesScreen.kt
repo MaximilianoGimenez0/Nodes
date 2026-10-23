@@ -67,18 +67,15 @@ fun NodesScreen(
         }
     }
 
-    // Usamos un Box raíz para que el fondo sea totalmente inmersivo
     Box(
         modifier = modifier.fillMaxSize()
     ) {
-        // Capa 1: Fondo Inmersivo
         NodesBackground(speedMultiplier = 0.5f, nodeCount = 20)
 
-        // Capa 2: Interfaz de Usuario (Aplica el padding del Scaffold global)
         Scaffold(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(outerPadding), // <--- IMPORTANTE: Desplaza el Scaffold (incluyendo FAB) sobre la BottomBar
+                .padding(outerPadding),
             containerColor = Color.Transparent, 
             topBar = {
                 CenterAlignedTopAppBar(
@@ -111,7 +108,6 @@ fun NodesScreen(
                 )
             }
         ) { paddingValues ->
-            // Capa 3: Contenido de la lista (Usa el padding interno del Scaffold local)
             Box(
                 modifier = Modifier
                     .fillMaxSize()
