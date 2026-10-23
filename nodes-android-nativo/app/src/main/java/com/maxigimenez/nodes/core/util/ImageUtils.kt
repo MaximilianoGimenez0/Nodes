@@ -16,9 +16,6 @@ import java.util.UUID
 
 object ImageUtils {
 
-    /**
-     * Crea un URI temporal para capturar una imagen con la cámara.
-     */
     fun createTempImageUri(context: Context): Uri {
         val tempFile = File.createTempFile("temp_image", ".jpg", context.cacheDir).apply {
             createNewFile()
@@ -31,15 +28,7 @@ object ImageUtils {
         )
     }
 
-    /**
-     * Comprime y redimensiona una imagen desde una URI, corrigiendo su orientación.
-     * @param context Contexto de la aplicación.
-     * @param uri URI de la imagen.
-     * @param maxWidth Ancho máximo permitido.
-     * @param maxHeight Alto máximo permitido.
-     * @param quality Calidad de compresión (1-100).
-     * @return ByteArray con la imagen comprimida o null si hubo un error.
-     */
+    /** Comprime y redimensiona una imagen desde una URI, aplicando rotación según metadatos EXIF. */
     fun compressImage(
         context: Context,
         uri: Uri,
@@ -82,9 +71,6 @@ object ImageUtils {
         }
     }
 
-    /**
-     * Comprime y redimensiona un Bitmap, corrigiendo su orientación si es necesario.
-     */
     fun compressBitmap(
         bitmap: Bitmap,
         maxWidth: Int = 1024,
@@ -146,9 +132,6 @@ object ImageUtils {
         return rotatedImg
     }
 
-    /**
-     * Sube una imagen a Firebase Storage.
-     */
     suspend fun uploadImage(imageData: ByteArray, folder: String): String? {
         return try {
             val storageRef = FirebaseStorage.getInstance().reference

@@ -67,21 +67,19 @@ fun ContentNavigation(
     LaunchedEffect(authState.value, pendingWorkspaceId) {
         val state = authState.value
         
-        // 1. Manejo de desautenticación
         if (state is AuthState.UnAuthenticated) {
+            // Vaciar la pila de navegación para impedir el retorno a pantallas protegidas tras cerrar sesión
             navController.navigate("login") {
                 popUpTo(0) { inclusive = true }
             }
             return@LaunchedEffect
         }
 
-        // 2. Manejo de navegación pendiente (Notificaciones)
         if (state is AuthState.Authenticated && pendingWorkspaceId != null) {
-            // Navegamos al chat específico
             contentNavController.navigate("chat/$pendingWorkspaceId") {
                 launchSingleTop = true
             }
-            // Limpiamos el ID para evitar navegaciones infinitas en recomposiciones
+            // Limpiar el ID consumido para evitar re-navegaciones durante recomposiciones
             authViewModel.clearPendingWorkspaceId()
         }
     }
@@ -91,7 +89,7 @@ fun ContentNavigation(
         bottomBar = {
             MainBottomBar(contentNavController)
         },
-        containerColor = Color.Transparent, // Permitimos que el fondo de las pantallas fluya
+        containerColor = Color.Transparent, // Permitir que el fondo inmersivo de las pantallas sea visible
         contentWindowInsets = WindowInsets(0, 0, 0, 0),
         content = { innerPadding ->
             NavHost(
@@ -105,7 +103,6 @@ fun ContentNavigation(
                 popEnterTransition = { NodesAnimations.popEnterTransition() },
                 popExitTransition = { NodesAnimations.popExitTransition() }
             ) {
-            // Grafo de Workspaces: Lista -> Chat -> Info
             navigation(startDestination = "workspaces", route = Routes.Nodes.route) {
                 composable("workspaces") {
                     NodesPage(

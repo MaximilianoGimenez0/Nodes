@@ -42,17 +42,11 @@ object NotificationHelper {
         }
     }
 
-    /**
-     * Verifica si las notificaciones generales del sistema están habilitadas.
-     */
     fun isGlobalNotificationsEnabled(context: Context): Boolean {
         return NotificationManagerCompat.from(context).areNotificationsEnabled()
     }
 
-    /**
-     * Verifica si las notificaciones Push (Canal de Mensajes de Nodos) están activas.
-     * Si las notificaciones globales del sistema están apagadas, devuelve false.
-     */
+    /** Verifica el estado del canal de mensajes supeditado a los permisos globales del sistema. */
     fun isPushNotificationsEnabled(context: Context): Boolean {
         if (!isGlobalNotificationsEnabled(context)) return false
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -66,10 +60,7 @@ object NotificationHelper {
         return true
     }
 
-    /**
-     * Verifica si los Recordatorios (Canal de Recordatorios) están activos.
-     * Si las notificaciones globales del sistema están apagadas, devuelve false.
-     */
+    /** Verifica el estado del canal de recordatorios supeditado a los permisos globales del sistema. */
     fun isRemindersNotificationsEnabled(context: Context): Boolean {
         if (!isGlobalNotificationsEnabled(context)) return false
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {

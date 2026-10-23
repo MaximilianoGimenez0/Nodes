@@ -10,9 +10,8 @@ import com.maxigimenez.nodes.R
 object ToastHelper {
 
     /**
-     * Muestra un Toast personalizado con el icono del launcher.
-     * Nota: En Android 12+ (API 31), los Toasts personalizados están limitados
-     * y podrían mostrarse con el formato estándar del sistema.
+     * Muestra un Toast con vista personalizada.
+     * En Android 12+ (API 31), el sistema restringe vistas personalizadas y aplica formato estándar.
      */
     fun showToast(context: Context, message: String, duration: Int = Toast.LENGTH_SHORT) {
         try {
@@ -30,7 +29,7 @@ object ToastHelper {
             toast.view = layout
             toast.show()
         } catch (e: Exception) {
-            // Fallback al Toast estándar si falla la personalización (ej. en versiones muy nuevas)
+            // Fallback al Toast del sistema ante excepciones en la inflación de vista personalizada
             Toast.makeText(context, message, duration).show()
         }
     }

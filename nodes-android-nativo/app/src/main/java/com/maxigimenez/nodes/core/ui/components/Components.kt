@@ -205,7 +205,6 @@ fun MainBottomBar(navController: NavController) {
         containerColor = MaterialTheme.colorScheme.surface,
     ) {
         Routes.entries.forEach { destination ->
-            // Verificamos si la ruta actual está dentro de la jerarquía de la ruta de la pestaña
             val isSelected = currentDestination?.hierarchy?.any { it.route == destination.route } == true
             
             val label = stringResource(destination.labelResId)
@@ -223,7 +222,7 @@ fun MainBottomBar(navController: NavController) {
                             restoreState = true
                         }
                     } else {
-                        // Si la pestaña actual ya está seleccionada pero estamos en un subdestino (ej: chat/{id} o info/{id})
+                        // Volver a la raíz del grafo si se pulsa la pestaña actualmente activa
                         if (destination == Routes.Nodes && currentDestination.route != "workspaces") {
                             val popped = navController.popBackStack("workspaces", inclusive = false)
                             if (!popped) {
@@ -399,7 +398,6 @@ fun NodesBackground(
     color: Color = MaterialTheme.colorScheme.primary
 ) {
     var currentTime by remember { mutableStateOf(0L) }
-    // Reiniciamos los nodos si cambia la cantidad o el rango de tamaño
     val nodes = remember(nodeCount, minRadius, maxRadius) { mutableStateListOf<ParticleNode>() }
 
     LaunchedEffect(Unit) {
@@ -413,9 +411,8 @@ fun NodesBackground(
     Canvas(
         modifier = modifier.fillMaxSize()
     ) {
-        val time = currentTime // Dispara la recomposición en cada frame
+        val time = currentTime // Forzar la invalidación del dibujo en cada frame mediante lectura de estado
 
-        // Inicialización de los nodos según los parámetros recibidos
         if (nodes.isEmpty() && size.width > 0) {
             for (i in 0 until nodeCount) {
                 val radiusSpan = (maxRadius - minRadius).coerceAtLeast(0f)
@@ -431,17 +428,14 @@ fun NodesBackground(
             }
         }
 
-        // Actualización de posición aplicando el multiplicador de velocidad
         nodes.forEach { node ->
             node.x += node.dx * speedMultiplier
             node.y += node.dy * speedMultiplier
 
-            // Rebote contra los bordes
             if (node.x <= 0f || node.x >= size.width) node.dx *= -1
             if (node.y <= 0f || node.y >= size.height) node.dy *= -1
         }
 
-        // Renderizado de las conexiones entre nodos
         for (i in 0 until nodes.size) {
             for (j in i + 1 until nodes.size) {
                 val n1 = nodes[i]
@@ -465,7 +459,6 @@ fun NodesBackground(
             }
         }
 
-        // Renderizado de los nodos individuales
         nodes.forEach { node ->
             drawCircle(
                 color = color.copy(alpha = 0.6f),

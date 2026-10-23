@@ -28,10 +28,8 @@ fun AppNavigation(
     val authState by authViewModel.authState.observeAsState()
     val pendingWorkspaceId by authViewModel.pendingWorkspaceId.collectAsState()
 
-    // Manejar navegación pendiente (Deep Link / Notificación)
     LaunchedEffect(authState, pendingWorkspaceId) {
         if (authState is AuthState.Authenticated && pendingWorkspaceId != null) {
-            // Si el destino actual no es home (estamos en login/signup), saltamos a home
             if (navController.currentBackStackEntry?.destination?.route != "home") {
                 navController.navigate("home") {
                     popUpTo("login") { inclusive = true }

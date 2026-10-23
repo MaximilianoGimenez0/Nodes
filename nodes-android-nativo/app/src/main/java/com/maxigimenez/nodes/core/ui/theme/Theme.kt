@@ -13,7 +13,6 @@ import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
 
-// --- MODO OSCURO ---
 val DarkColorScheme = darkColorScheme(
     primary = ElegantViolet80,
     onPrimary = ElegantViolet20,
@@ -46,7 +45,6 @@ val DarkColorScheme = darkColorScheme(
 )
 
 
-// --- MODO CLARO ---
 val LightColorScheme = lightColorScheme(
     primary = ElegantViolet40,
     onPrimary = Color.White,

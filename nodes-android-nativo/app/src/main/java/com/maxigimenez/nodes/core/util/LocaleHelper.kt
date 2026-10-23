@@ -9,7 +9,7 @@ object LocaleHelper {
         val languageTag = when (languageSetting) {
             "Inglés" -> "en"
             "Portugués" -> "pt"
-            else -> "es" // Español por defecto
+            else -> "es"
         }
 
         val appLocale: LocaleListCompat = LocaleListCompat.forLanguageTags(languageTag)

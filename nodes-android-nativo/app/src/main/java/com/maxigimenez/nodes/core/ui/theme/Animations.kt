@@ -12,17 +12,14 @@ import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.unit.dp
 
 object NodesAnimations {
-    // Duraciones estandarizadas
     const val ShortDuration = 250
     const val MediumDuration = 400
     const val LongDuration = 600
 
-    // Easings modernos
     val FastOutSlowIn = FastOutSlowInEasing
     val StandardEasing = CubicBezierEasing(0.4f, 0.0f, 0.2f, 1.0f)
     val EmphasizedEasing = CubicBezierEasing(0.2f, 0.0f, 0.0f, 1.0f)
 
-    // Transiciones de Navegación Predefinidas
     fun enterTransition(): EnterTransition {
         return fadeIn(animationSpec = tween(MediumDuration, easing = FastOutSlowIn)) +
                 slideInHorizontally(
@@ -56,9 +53,6 @@ object NodesAnimations {
     }
 }
 
-/**
- * Extension para aplicar una animación de entrada (Fade + Scale + Offset)
- */
 @Composable
 fun Modifier.entranceAnimation(
     delay: Int = 0,
@@ -83,17 +77,11 @@ fun Modifier.entranceAnimation(
         .offset(y = (20 * (1f - animationState.value)).dp)
 }
 
-/**
- * Para animaciones staggered en listas
- */
 @Composable
 fun staggeredDelay(index: Int, baseDelay: Int = 50): Int {
     return index * baseDelay
 }
 
-/**
- * Efecto de escala al presionar para botones o tarjetas
- */
 @Composable
 fun Modifier.pressClickEffect(): Modifier {
     var isPressed by remember { mutableStateOf(false) }
