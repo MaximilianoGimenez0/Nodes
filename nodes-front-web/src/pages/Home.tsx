@@ -18,7 +18,6 @@ export const Home: React.FC = () => {
 
   const navigate = useNavigate();
 
-  // Construir perfil asegurando la sincronización entre Firestore y Firebase Auth
   const effectiveProfile: UserProfile = {
     id: userProfile?.id || currentUser?.uid || "",
     email: userProfile?.email || currentUser?.email || "",
@@ -32,18 +31,16 @@ export const Home: React.FC = () => {
     setIsDeleting(true);
 
     try {
-      // 1. Invocar Cloud Function 'deleteUserAccount'
       const deleteUserAccountFn = httpsCallable(functions, FIREBASE_CONSTANTS.FUNCTIONS.DELETE_USER_ACCOUNT);
       await deleteUserAccountFn();
 
-      // 2. Desloguear de la sesión de Firebase Auth local
+      // Tolerar fallos de cierre de sesión porque la cuenta ya fue destruida en Firebase Auth por el backend
       try {
         await logout();
       } catch (authError) {
         console.warn("Sesión cerrada tras eliminación:", authError);
       }
 
-      // 3. Redirigir a /login mostrando mensaje de confirmación
       navigate(ROUTES.LOGIN, {
         replace: true,
         state: {
@@ -65,13 +62,10 @@ export const Home: React.FC = () => {
 
   return (
     <div className={styles.homePage}>
-      {/* Barra superior de navegación unificada */}
       <Navbar />
 
-      {/* Contenido Principal */}
       <main className={styles.mainContent}>
         <div className={styles.contentContainer}>
-          {/* Mensaje de error general si falló la operación */}
           {errorMessage && (
             <div className={`${styles.alert} ${styles.alertDanger}`} role="alert">
               <svg
@@ -99,7 +93,6 @@ export const Home: React.FC = () => {
             </div>
           )}
 
-          {/* Encabezado de la página */}
           <div className={styles.pageHeading}>
             <h1 className={styles.pageTitle}>Gestión de Perfil y Privacidad</h1>
             <p className={styles.pageDescription}>
@@ -107,7 +100,6 @@ export const Home: React.FC = () => {
             </p>
           </div>
 
-          {/* Tarjeta de Perfil */}
           {authLoading && !userProfile ? (
             <div className={styles.skeletonCard}>
               <div className={styles.skeletonAvatar}></div>
@@ -121,7 +113,6 @@ export const Home: React.FC = () => {
             />
           )}
 
-          {/* Información complementaria de privacidad */}
           <div className={styles.infoCard}>
             <div className={styles.infoCardIcon}>
               <svg
@@ -145,7 +136,6 @@ export const Home: React.FC = () => {
         </div>
       </main>
 
-      {/* Modal de confirmación destructiva */}
       <ConfirmModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}

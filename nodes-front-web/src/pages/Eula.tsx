@@ -30,12 +30,10 @@ export const Eula: React.FC = () => {
 
   return (
     <div className={styles.eulaPage}>
-      {/* Barra superior de navegación unificada */}
       <Navbar />
 
       <main className={styles.mainContent}>
         <div className={styles.contentContainer}>
-          {/* Cabecera principal */}
           <section className={styles.headerCard}>
             <div className={styles.headerGlow}></div>
             <div className={styles.headerTop}>
@@ -48,7 +46,6 @@ export const Eula: React.FC = () => {
             <p className={styles.eulaSubtitle}>{EULA_CONFIG.subtitle}</p>
           </section>
 
-          {/* Índice de navegación rápida */}
           <nav className={styles.tableOfContents} aria-label="Índice de secciones">
             <div className={styles.tocTitle}>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -97,9 +94,7 @@ export const Eula: React.FC = () => {
             </div>
           </nav>
 
-          {/* Lista de secciones legales */}
           <div className={styles.sectionsList}>
-            {/* 1. DESCRIPCIÓN DEL SERVICIO */}
             <article className={styles.sectionCard} id="sec-1">
               <div className={styles.sectionHeader}>
                 <div className={styles.sectionNumber}>1</div>
@@ -144,7 +139,6 @@ export const Eula: React.FC = () => {
               </div>
             </article>
 
-            {/* 2. CONTENIDO GENERADO POR EL USUARIO (UGC) */}
             <article className={styles.sectionCard} id="sec-2">
               <div className={styles.sectionHeader}>
                 <div className={styles.sectionNumber}>2</div>
@@ -213,7 +207,6 @@ export const Eula: React.FC = () => {
               </div>
             </article>
 
-            {/* 3. MODERACIÓN Y SEGURIDAD */}
             <article className={styles.sectionCard} id="sec-3">
               <div className={styles.sectionHeader}>
                 <div className={styles.sectionNumber}>3</div>
@@ -275,7 +268,6 @@ export const Eula: React.FC = () => {
               </div>
             </article>
 
-            {/* 4. PRIVACIDAD Y DATOS */}
             <article className={styles.sectionCard} id="sec-4">
               <div className={styles.sectionHeader}>
                 <div className={styles.sectionNumber}>4</div>
@@ -296,7 +288,6 @@ export const Eula: React.FC = () => {
               </div>
             </article>
 
-            {/* 5. LICENCIA DE USO */}
             <article className={styles.sectionCard} id="sec-5">
               <div className={styles.sectionHeader}>
                 <div className={styles.sectionNumber}>5</div>
@@ -311,7 +302,6 @@ export const Eula: React.FC = () => {
               </div>
             </article>
 
-            {/* 6. LIMITACIÓN DE RESPONSABILIDAD */}
             <article className={styles.sectionCard} id="sec-6">
               <div className={styles.sectionHeader}>
                 <div className={styles.sectionNumber}>6</div>
@@ -326,7 +316,6 @@ export const Eula: React.FC = () => {
               </div>
             </article>
 
-            {/* 7. ELIMINACIÓN DE CUENTA */}
             <article className={styles.sectionCard} id="sec-7">
               <div className={styles.sectionHeader}>
                 <div className={styles.sectionNumber}>7</div>
@@ -360,7 +349,6 @@ export const Eula: React.FC = () => {
               </div>
             </article>
 
-            {/* 8. MODIFICACIONES */}
             <article className={styles.sectionCard} id="sec-8">
               <div className={styles.sectionHeader}>
                 <div className={styles.sectionNumber}>8</div>
@@ -377,7 +365,6 @@ export const Eula: React.FC = () => {
         </div>
       </main>
 
-      {/* Pie de página */}
       <footer className={styles.eulaFooter}>
         <div className={styles.eulaFooterContent}>
           <div className={styles.footerLinks}>

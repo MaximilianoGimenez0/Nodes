@@ -114,8 +114,6 @@
   border-radius: 100px;
   white-space: nowrap;
 }
-
-/* Sección de Detalles del Usuario */
 .profileDetailsSingle {
   display: flex;
   flex-direction: column;
@@ -213,8 +211,6 @@
   background-color: rgba(255, 255, 255, 0.12);
   border-color: var(--primary-color);
 }
-
-/* Zona de Peligro */
 .dangerZone {
   border-top: 1px solid var(--surface-variant);
   padding-top: 1.5rem;

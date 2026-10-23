@@ -1,7 +1,7 @@
 export interface UserProfile {
-  id: string; // UID del usuario
+  id: string;
   email: string;
   firstName: string;
   lastName: string;
-  profilePicture: string; // URL alojada en Firebase Storage (/profile_pictures)
+  profilePicture: string;
 }

@@ -78,8 +78,6 @@ export const Navbar: React.FC = () => {
             </div>
             <span className={styles.navbarTitle}>{APP_CONFIG.name}</span>
           </button>
-
-          {/* Enlaces de navegación */}
           <nav className={styles.navLinks} aria-label="Navegación principal">
             <button
               type="button"
@@ -111,8 +109,6 @@ export const Navbar: React.FC = () => {
             </button>
           </nav>
         </div>
-
-        {/* Acciones de autenticación */}
         <div className={styles.navbarActions}>
           {currentUser ? (
             <>

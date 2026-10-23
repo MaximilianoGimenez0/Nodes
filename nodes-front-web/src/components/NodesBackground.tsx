@@ -101,8 +101,6 @@ export const NodesBackground: React.FC = () => {
           }
         }
       }
-
-      // 3. Dibujar nodos (círculos con 60% de opacidad)
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i];
 

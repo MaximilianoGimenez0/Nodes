@@ -21,8 +21,6 @@
   flex-direction: column;
   gap: 2rem;
 }
-
-/* Encabezado */
 .headerCard {
   background: linear-gradient(135deg, rgba(26, 27, 34, 0.95) 0%, rgba(43, 46, 100, 0.25) 100%);
   border: 1px solid rgba(196, 198, 255, 0.18);
@@ -88,8 +86,6 @@
   line-height: 1.6;
   max-width: 720px;
 }
-
-/* Índice rápido de secciones */
 .tableOfContents {
   background-color: rgba(26, 27, 34, 0.6);
   border: 1px solid var(--surface-variant);
@@ -151,8 +147,6 @@
   font-size: 0.6875rem;
   font-weight: 700;
 }
-
-/* Tarjetas de Secciones */
 .sectionsList {
   display: flex;
   flex-direction: column;
@@ -218,8 +212,6 @@
 .sectionText {
   color: var(--text-muted);
 }
-
-/* Features Grid (para Descripción del Servicio) */
 .featuresPills {
   display: flex;
   flex-wrap: wrap;
@@ -245,8 +237,6 @@
   height: 16px;
   color: var(--primary-color);
 }
-
-/* Tolerancia Cero / Alertas de UGC */
 .zeroToleranceBanner {
   background: linear-gradient(135deg, rgba(140, 29, 24, 0.25) 0%, rgba(26, 27, 34, 0.9) 100%);
   border: 1px solid rgba(242, 184, 181, 0.35);
@@ -322,8 +312,6 @@
   line-height: 1.5;
   padding-left: 1rem;
 }
-
-/* Moderación y Seguridad */
 .moderationList {
   display: flex;
   flex-direction: column;
@@ -370,8 +358,6 @@
   color: var(--text-muted);
   line-height: 1.5;
 }
-
-/* Bloque destacado de Firebase/Privacidad */
 .techBadgeRow {
   display: flex;
   align-items: center;
@@ -392,8 +378,6 @@
   color: var(--primary-color);
   font-weight: 600;
 }
-
-/* Callout para Eliminación de cuenta */
 .accountDeletionCallout {
   background: linear-gradient(135deg, rgba(26, 27, 34, 0.95) 0%, rgba(66, 69, 123, 0.25) 100%);
   border: 1px solid rgba(196, 198, 255, 0.25);
@@ -441,8 +425,6 @@
   background-color: #DDE0FF;
   transform: translateY(-1px);
 }
-
-/* Pie de página EULA */
 .eulaFooter {
   border-top: 1px solid var(--surface-variant);
   background-color: rgba(26, 27, 34, 0.8);

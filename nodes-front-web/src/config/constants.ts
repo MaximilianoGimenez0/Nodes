@@ -1,7 +1,3 @@
-/**
- * Constantes Globales y Configuración de la Aplicación NODES
- */
-
 export const APP_CONFIG = {
   name: "NODES",
   fullName: "NODES — Soporte y Gestión de Cuenta",

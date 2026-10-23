@@ -12,7 +12,6 @@ export const ProfileCard: React.FC<ProfileCardProps> = ({ profile, onDeleteClick
   const [imageError, setImageError] = useState(false);
   const [copiedEmail, setCopiedEmail] = useState(false);
 
-  // Obtener iniciales del usuario para el avatar de respaldo
   const getInitials = (): string => {
     const first = profile.firstName?.trim().charAt(0) || "";
     const last = profile.lastName?.trim().charAt(0) || "";
@@ -42,7 +41,6 @@ export const ProfileCard: React.FC<ProfileCardProps> = ({ profile, onDeleteClick
     <div className={styles.profileCard}>
       <div className={styles.profileCardGlow}></div>
 
-      {/* Encabezado del perfil con Avatar */}
       <div className={styles.profileHeader}>
         <div className={styles.avatarWrapper}>
           {shouldShowImage ? (
@@ -68,7 +66,6 @@ export const ProfileCard: React.FC<ProfileCardProps> = ({ profile, onDeleteClick
         </div>
       </div>
 
-      {/* Información del Usuario: Correo Electrónico */}
       <div className={styles.profileDetailsSingle}>
         <div className={styles.detailItem}>
           <div className={styles.detailHeaderRow}>
@@ -121,7 +118,6 @@ export const ProfileCard: React.FC<ProfileCardProps> = ({ profile, onDeleteClick
         </div>
       </div>
 
-      {/* Zona de peligro / Eliminación de cuenta */}
       <div className={styles.dangerZone}>
         <div className={styles.dangerZoneHeader}>
           <div className={styles.dangerIconContainer}>

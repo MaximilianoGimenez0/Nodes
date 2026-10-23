@@ -176,8 +176,6 @@
   color: var(--text-muted);
   line-height: 1.5;
 }
-
-/* Alertas */
 .alert {
   display: flex;
   align-items: center;
@@ -221,8 +219,6 @@
 .alertClose:hover {
   opacity: 1;
 }
-
-/* Skeleton Loaders */
 .skeletonCard {
   min-height: 260px;
   display: flex;

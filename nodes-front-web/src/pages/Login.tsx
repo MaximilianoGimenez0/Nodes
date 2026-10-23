@@ -31,11 +31,9 @@ export const Login: React.FC = () => {
       clearTimeout(openAppTimerRef.current);
     }
 
-    // 1. Intentar abrir la aplicación nativa mediante deep link
     window.location.href = DEEP_LINKS.APP_LOGIN;
 
-    // 2. Fallback: Si en 2.5s la pestaña sigue activa (la app no tomó el control o está en PC),
-    // redirigir a la tienda Play Store
+    // Redirigir a Play Store si el navegador sigue en primer plano tras intentar el deep link
     openAppTimerRef.current = setTimeout(() => {
       if (!document.hidden) {
         window.location.href = DEEP_LINKS.PLAY_STORE_URL;
@@ -46,14 +44,13 @@ export const Login: React.FC = () => {
   const { login, currentUser, loading: authLoading } = useAuth();
   const navigate = useNavigate();
 
-  // Limpiar el estado de navegación para que no persista al recargar
+  // Limpiar el estado del historial para evitar mostrar mensajes duplicados al recargar
   useEffect(() => {
     if (location.state?.message) {
       window.history.replaceState({}, document.title);
     }
   }, [location]);
 
-  // Si el usuario ya está autenticado, redirigir a /home
   useEffect(() => {
     if (!authLoading && currentUser) {
       const destination = location.state?.from?.pathname || ROUTES.HOME;
@@ -150,8 +147,6 @@ export const Login: React.FC = () => {
             </button>
           </div>
         )}
-
-        {/* Formulario de Login */}
         <div className={styles.authCard}>
           <div className={styles.authCardHeaderRow}>
             <h2 className={styles.authCardTitle}>Iniciar Sesión</h2>
@@ -319,8 +314,6 @@ export const Login: React.FC = () => {
             <span className={styles.privacyBadge}>Privacidad y Seguridad Garantizada</span>
           </div>
         </footer>
-
-        {/* Modal para restablecimiento de contraseña vía Firebase Auth */}
         {isForgotPasswordOpen && (
           <ForgotPasswordModal
             isOpen={isForgotPasswordOpen}

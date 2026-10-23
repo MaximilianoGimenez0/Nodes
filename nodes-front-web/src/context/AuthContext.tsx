@@ -27,7 +27,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
-  // Escuchar cambios en el estado de autenticación de Firebase
   useEffect(() => {
     let unsubscribeProfile: (() => void) | undefined;
 
@@ -38,7 +37,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         setLoading(true);
         const userDocRef = doc(db, FIREBASE_CONSTANTS.COLLECTIONS.USERS, user.uid);
 
-        // Suscripción en tiempo real a los datos del perfil en Firestore
         unsubscribeProfile = onSnapshot(
           userDocRef,
           (docSnap) => {
@@ -52,7 +50,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
                 profilePicture: data.profilePicture || data.photoURL || data.avatar || "",
               });
             } else {
-              // Si aún no existe el documento en Firestore, creamos una vista preliminar con los datos de Auth
+              // Construir perfil temporal desde Firebase Auth si el documento en Firestore aún no existe
               const displayNameParts = (user.displayName || "").split(" ");
               setUserProfile({
                 id: user.uid,
@@ -66,7 +64,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
           },
           (error) => {
             console.error("Error al escuchar cambios del perfil en Firestore:", error);
-            // Fallback con datos de Firebase Auth
             setUserProfile({
               id: user.uid,
               email: user.email || "",
